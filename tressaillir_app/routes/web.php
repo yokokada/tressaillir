@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request; //Add
+use App\Http\Controllers\MemberController; //Add
 
 /*
 |--------------------------------------------------------------------------
