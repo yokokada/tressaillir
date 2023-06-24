@@ -26,3 +26,7 @@ Route::get('/index', function () {
 Route::get('/create', function () {
     return view('create');
 });
+
+Route::get('/register', function () {
+    return view('/auth/register');
+});
