@@ -23,6 +23,6 @@ Route::get('/index', function () {
     return view('index');
 });
 
-Route::get('/index', function () {
+Route::get('/create', function () {
     return view('create');
 });
