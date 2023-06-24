@@ -60,8 +60,8 @@ class MemberController extends Controller
             $member->main_guest   = $request->	main_guest;
             $member->save();
 
-            //
-            return redirect()->route('products.index')->with('success','Product Added successfully');
+            //テーブルに保存
+            return redirect('/index')->with('success','登録しました！');
     }
 
     /**
