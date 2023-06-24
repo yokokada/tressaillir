@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Member;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Validator; 
+use Illuminate\Support\Facades\Auth;  
+
 class MemberController extends Controller
 {
     /**
@@ -26,9 +29,39 @@ class MemberController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+    //管理フラグはhiddenのためチェックなし
     public function store(Request $request)
     {
-        
+        $validator = Validator::make($request->all(), [
+            'nickname'     => 'required | min:1 | max:20',
+            'icon'         => 'nullable',
+            'hobby'        => 'required',
+            'sex'          => 'required',
+            'firstdrink'   => 'required',
+            'main_guest'   => 'required',
+        ]);
+
+            //バリデーション:エラー 
+            if ($validator->fails()) {
+                return redirect('/')
+                    ->withInput()
+                    ->withErrors($validator);
+            }
+            //以下に登録処理を記述（Eloquentモデル）
+
+            // Eloquentモデル カラム名をデータベースに情報を保存する
+            $member = new Member;
+            $member->kanri_flag   = $request->	kanri_flag;
+            $member->nickname     = $request->nickname;
+            $member->icon         = $request->	icon;
+            $member->hobby        = $request->hobby;
+            $member->sex          = $request->sex;
+            $member->firstdrink   = $request->	firstdrink;
+            $member->main_guest   = $request->	main_guest;
+            $member->save();
+
+            //
+            return redirect()->route('products.index')->with('success','Product Added successfully');
     }
 
     /**
