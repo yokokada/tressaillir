@@ -15,13 +15,14 @@ use App\Http\Controllers\MemberController; //Add
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/index', function () {
     return view('index');
 });
+
 
 Route::get('/create', function () {
     return view('create');
@@ -30,3 +31,8 @@ Route::get('/create', function () {
 Route::get('/register', function () {
     return view('/auth/register');
 });
+
+Route::post('/members',[ MemberController::class, "store"]);
+
+// Route::post('/books', [BookController::class, "store"])->name('book_store');
+// Route::post('/lists', [IndexController::class, "store"])->name('lists_store');
