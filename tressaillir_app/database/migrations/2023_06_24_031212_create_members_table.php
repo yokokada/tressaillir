@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('kanri_flag')->nullable();
             $table->string('nickname');
-            $table->string('icon')->nullable();
+            $table->string('icon')->nullable()->default('img/defo_img.png');
             $table->string('hobby');
             $table->integer('sex');
             $table->integer('firstdrink');
