@@ -8,7 +8,7 @@
 </head>
 
 <body>
-  <form action="{{ url('members') }}" method="post" class="" >
+  <form action="{{ url('members') }}" method="post" class="" enctype="multipart/form-data">
     @csrf
     <div class="">
       <!-- カラム１ -->
@@ -23,7 +23,7 @@
         <label class="">
           アイコン
         </label>
-        <input type="file" name="icon" accept="image/*">
+        <input type="file" name="icon" accept="image/*" onchange="showFile(event)">
       </div>
       <!-- カラム4 -->
       <div class="">
