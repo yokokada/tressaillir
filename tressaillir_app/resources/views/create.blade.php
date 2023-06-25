@@ -8,7 +8,7 @@
 </head>
 
 <body>
-  <form action="{{ url('members') }}" method="post" class="">
+  <form action="{{ url('members') }}" method="post" class="" >
     @csrf
     <div class="">
       <!-- カラム１ -->
