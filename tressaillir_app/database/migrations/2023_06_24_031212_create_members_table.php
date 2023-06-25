@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('members', function (Blueprint $table) {
             $table->id();
-            $table->integer('kanri_flag');
+            $table->integer('kanri_flag')->nullable();
             $table->string('nickname');
-            $table->string('icon');
+            $table->string('icon')->nullable();
             $table->string('hobby');
             $table->integer('sex');
             $table->integer('firstdrink');
