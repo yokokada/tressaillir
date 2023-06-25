@@ -50,12 +50,19 @@ class MemberController extends Controller
         //             ->withErrors($validator);
         //     }
         //     //以下に登録処理を記述（Eloquentモデル）
+        // Eloquentモデル カラム名をデータベースに情報を保存する
+        //ディレクトリ名
+        $dir = 'img';
+        $file_name = time() . '.' . $request->file('icon')->getClientOriginalName();
+        // $request->file('icon')->move(public_path('img'), $file_name);
+        $request->file('icon')->storeAs('public/' . $dir, $file_name);
 
-            // Eloquentモデル カラム名をデータベースに情報を保存する
+
             $member = new Member;
             $member->kanri_flag   = $request->kanri_flag;
             $member->nickname     = $request->nickname;
-            $member->icon         = $request->icon;
+            $member->icon         = 'storage/' . $dir . '/' . $file_name;
+            // $member->icon         = $request->icon;
             $member->hobby        = $request->hobby;
             $member->sex          = $request->sex;
             $member->firstdrink   = $request->firstdrink;
