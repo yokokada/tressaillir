@@ -19,10 +19,8 @@ use App\Http\Controllers\MemberController; //Add
 //     return view('welcome');
 // });
 
-Route::get('/index', function () {
-    return view('index');
-});
-
+//Index画面
+Route::get('/index', [MemberController::class, "index"]);
 
 Route::get('/create', function () {
     return view('create');
