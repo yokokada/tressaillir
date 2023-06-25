@@ -32,32 +32,32 @@ class MemberController extends Controller
     //管理フラグはhiddenのためチェックなし
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'nickname'     => 'required | min:1 | max:20',
-            'icon'         => 'nullable',
-            'hobby'        => 'required',
-            'sex'          => 'required',
-            'firstdrink'   => 'required',
-            'main_guest'   => 'required',
-        ]);
+        // $validator = Validator::make($request->all(), [
+        //     'nickname'     => 'required | min:1 | max:20',
+        //     'icon'         => 'nullable',
+        //     'hobby'        => 'required',
+        //     'sex'          => 'required',
+        //     'firstdrink'   => 'required',
+        //     'main_guest'   => 'required',
+        // ]);
 
-            //バリデーション:エラー 
-            if ($validator->fails()) {
-                return redirect('/')
-                    ->withInput()
-                    ->withErrors($validator);
-            }
-            //以下に登録処理を記述（Eloquentモデル）
+        //     //バリデーション:エラー 
+        //     if ($validator->fails()) {
+        //         return redirect('/')
+        //             ->withInput()
+        //             ->withErrors($validator);
+        //     }
+        //     //以下に登録処理を記述（Eloquentモデル）
 
             // Eloquentモデル カラム名をデータベースに情報を保存する
             $member = new Member;
-            $member->kanri_flag   = $request->	kanri_flag;
+            $member->kanri_flag   = $request->kanri_flag;
             $member->nickname     = $request->nickname;
-            $member->icon         = $request->	icon;
+            $member->icon         = $request->icon;
             $member->hobby        = $request->hobby;
             $member->sex          = $request->sex;
-            $member->firstdrink   = $request->	firstdrink;
-            $member->main_guest   = $request->	main_guest;
+            $member->firstdrink   = $request->firstdrink;
+            $member->main_guest   = $request->main_guest;
             $member->save();
 
             //テーブルに保存

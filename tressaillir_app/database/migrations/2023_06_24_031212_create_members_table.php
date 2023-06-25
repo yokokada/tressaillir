@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('hobby');
             $table->integer('sex');
             $table->integer('firstdrink');
-            $table->integer('main_guest');
+            $table->integer('main_guest')->nullable();
             $table->timestamps();
         });
     }
