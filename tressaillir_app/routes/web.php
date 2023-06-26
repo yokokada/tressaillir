@@ -19,6 +19,12 @@ use Illuminate\Support\Facades\Route;
 // });
 
 //
+Route::post('/event', [EventController::class, "store"]);
+
+Route::get('/event-cordinator', function () {
+    return view('event-cordinator');
+});
+
 Route::get('/index', [MemberController::class, "index"]);
 
 Route::get('/create', function () {
@@ -30,9 +36,6 @@ Route::get('/register', function () {
 });
 
 Route::post('/members', [MemberController::class, "store"]);
-
-//席決めボタンルート
-Route::post('/test', [MemberController::class, "store"]);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
