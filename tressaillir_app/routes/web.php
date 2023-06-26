@@ -31,6 +31,9 @@ Route::get('/register', function () {
 
 Route::post('/members', [MemberController::class, "store"]);
 
+//席決めボタンルート
+Route::post('/test', [MemberController::class, "store"]);
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
