@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\MemberController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +14,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+//
+Route::get('/index', [MemberController::class, "index"]);
+
+Route::get('/create', function () {
+    return view('create');
 });
+
+Route::get('/register', function () {
+    return view('/auth/register');
+});
+
+Route::post('/members', [MemberController::class, "store"]);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
