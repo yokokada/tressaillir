@@ -74,6 +74,7 @@
       <!-- 送信ボタン -->
       <div class="">
         <div class="">
+          <input name="event_id" type="hidden" value="{{ $id }}">
           <button class="" type="submit">送信</button>
         </div>
       </div>
