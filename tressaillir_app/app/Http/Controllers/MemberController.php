@@ -28,10 +28,11 @@ class MemberController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function createForm()
+    public function createForm($id)
     {
-        return view('create');
+        return view('create', ['id' => $id]);
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -72,6 +73,7 @@ class MemberController extends Controller
             $member->sex          = $request->sex;
             $member->firstdrink   = $request->firstdrink;
             $member->main_guest   = $request->main_guest;
+            $member->event_id     = $request->event_id;
             $member->save();
 
             //テーブルに保存
