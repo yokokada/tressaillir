@@ -19,6 +19,11 @@ class MemberController extends Controller
         // return view('members')->with('members',$members);
             return view('index', ['members' => $members]);
     }
+    public function event()
+    {
+        $members = Member::orderBy('created_at', 'asc')->get();
+            return view('event', ['members' => $members]);
+    }
 
     /**
      * Show the form for creating a new resource.

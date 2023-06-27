@@ -15,27 +15,41 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-//イベント登録
-Route::post( '/event', [EventController::class, "store"]);
-//イベント一覧表示
+// ーーーーーーーーーーーーイベント登録関係ーーーーーーーーーーーーーーーー
+//イベント情報入力画面 event-cordinator.blade.php
+Route::get('/event-cordinator', [EventController::class, "eventCordinatorForm"]);
+//イベント登録処理 ファイルなし
+Route::post( '/event-register', [EventController::class, "store"]);
+//イベントタイトル一覧表示 event-index.blade.php
 Route::get('/event-index', [EventController::class, "index"]);
-//イベント詳細
+//イベント詳細ページ event-detail.blade.php
 Route::get('/event-detail/{id}', [EventController::class, "show"])->name('event-detail');
 
-Route::get('/event-cordinator', [EventController::class, "eventCordinatorForm"]);
 
-//飲み会情報一覧画面
-Route::get('/index', [MemberController::class, "index"]);
-//入力画面表示
+// ーーーーーーーーーーーー参加者登録関係ーーーーーーーーーーーーーーーー
+//参加者情報入力画面 create.blade.php
 Route::get('/create', [MemberController::class, "createForm"]);
+//参加者入力フォームのデータ登録 ファイルなし
+Route::post('/members', [MemberController::class, "store"]);
 
+// ーーーーーーーーーーーー表示関係ーーーーーーーーーーーーーーーーーーー
+// 飲み会前画面 event.blade.php
+Route::get('/event', [MemberController::class, "event"]);
+
+// 飲み会表示画面へのスロット event-show.blade.php
+
+//席替え表示画面 index.blade.php
+Route::get('/index', [MemberController::class, "index"]);
+
+
+
+
+
+// ーーーーーーーーーー今の使用なしーーーーーーーーーーーーーーーーーーーーー
+// ブリーズの登録画面
 Route::get('/register', function () {
     return view('/auth/register');
 });
-//参加者入力フォームのデータ登録
-Route::post('/members', [MemberController::class, "store"]);
-
 //認証
 Route::get('/dashboard', function () {
     return view('dashboard');
