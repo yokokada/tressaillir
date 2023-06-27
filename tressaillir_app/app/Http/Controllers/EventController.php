@@ -12,7 +12,8 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+        $events = Event::orderBy('created_at', 'asc')->get();
+        return view('event-index', ['events' => $events]);
     }
 
     /**
@@ -22,30 +23,35 @@ class EventController extends Controller
     {
         //
     }
-
+    //幹事の飲み会入力画面
+    public function eventCordinatorForm()
+    {
+        return view('event-cordinator');
+    }
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-            $event = new Event;
-            $event->event   = $request->event;
-            $event->date     = $request->date;
-            $event->event_place      = $request->event_place;
-            $event->place_url        = $request->place_url;
-            $event->event_url        = $request->event_url;
-            $event->save();
+        $event = new Event;
+        $event->event   = $request->event;
+        $event->date     = $request->date;
+        $event->event_place      = $request->event_place;
+        $event->place_url        = $request->place_url;
+        $event->event_url        = $request->event_url;
+        $event->save();
 
-            //テーブルに保存
-            return redirect('/event')->with('success','登録しました！');
+        //テーブルに保存
+        return redirect('/event-index')->with('success', '登録しました！');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Event $event)
+    public function show($id)
     {
-        //
+        $event = Event::find($id);
+        return view('event-detail')->with('event' , $event);
     }
 
     /**

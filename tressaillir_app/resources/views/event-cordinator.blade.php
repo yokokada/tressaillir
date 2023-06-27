@@ -9,6 +9,7 @@
 </head>
 
 <body>
+  <h1>飲み会情報登録画面</h1>
   <form action="{{ url('event') }}" method="post" class="">
     @csrf
     <div class="">
@@ -23,7 +24,7 @@
         <label class="">
           日時
         </label>
-      <input name="date" class="" type="text" placeholder="">
+      <input name="date" class="" type="date" placeholder="">
 
       </div>
         <label class="">
@@ -47,5 +48,8 @@
       </div>
     </div>
   </form>
+  <div>
+    <a href="/event-index">イベントリスト</a>
+  </div>
 </body>
 </html>
