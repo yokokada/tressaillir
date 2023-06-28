@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('sex');
             $table->integer('firstdrink');
             $table->integer('main_guest')->nullable();
+            $table->string('event_id');
             $table->timestamps();
         });
     }
