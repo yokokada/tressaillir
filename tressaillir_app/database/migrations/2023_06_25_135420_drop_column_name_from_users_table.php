@@ -25,12 +25,12 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('event');
-            $table->date('date');
-            $table->string('event_place');
-            $table->string('place_url');
-            $table->string('event_url');
+            // $table->id();
+            // $table->string('event');
+            // $table->date('date');
+            // $table->string('event_place');
+            // $table->string('place_url');
+            // $table->string('event_url');
         });
     }
 };

@@ -10,7 +10,7 @@
 
 <body>
   <h1>飲み会情報登録画面</h1>
-  <form action="{{ url('event') }}" method="post" class="">
+  <form action="{{ url('event-register') }}" method="post" class="">
     @csrf
     <div class="">
       <div class="">
@@ -22,10 +22,15 @@
       <!-- カラム4 -->
       <div class="">
         <label class="">
-          日時
+          日程
         </label>
       <input name="date" class="" type="date" placeholder="">
-
+      </div>
+      <div class="">
+        <label class="">
+          時間
+        </label>
+        <input name="time" class="" type="time" placeholder="">
       </div>
         <label class="">
           店名

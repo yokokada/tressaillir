@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
+        Schema::table('events', function (Blueprint $table) {
+            // $table->string('time');
         });
     }
 
@@ -21,12 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            // $table->string('event');
-            // $table->date('date');
-            // $table->string('event_place');
-            // $table->string('place_url');
-            // $table->string('event_url');
+        Schema::table('events', function (Blueprint $table) {
+            //
         });
     }
 };

@@ -23,7 +23,7 @@ return new class extends Migration
     {
         Schema::table('events', function (Blueprint $table) {
             //ロールバックでnull許容なしに戻せるようにコマンドを記述
-            $table->string('event_url')->nullable(false)->change();
+            // $table->string('event_url')->nullable(false)->change();
             
         });
     }

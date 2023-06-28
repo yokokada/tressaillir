@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('event');
             $table->date('date');
+            $table->string('time');
             $table->string('event_place');
             $table->string('place_url');
             $table->string('event_url');
