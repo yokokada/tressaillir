@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\EventshowController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,16 +36,10 @@ Route::post('/members', [MemberController::class, "store"]);
 
 // ーーーーーーーーーーーー表示関係ーーーーーーーーーーーーーーーーーーー
 // 飲み会前画面 event.blade.php
-Route::get('/event', [MemberController::class, "event"]);
-
-// 飲み会表示画面へのスロット event-show.blade.php
+Route::get('/event', [EventshowController::class, 'index']);
 
 //席替え表示画面 index.blade.php
 Route::get('/index', [MemberController::class, "index"]);
-
-
-
-
 
 // ーーーーーーーーーー今の使用なしーーーーーーーーーーーーーーーーーーーーー
 // ブリーズの登録画面
