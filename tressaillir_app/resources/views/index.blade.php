@@ -8,6 +8,7 @@
     <title>Document</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
+
 <body>
     
     <div class="flex justify-center items-center h-screen">
@@ -23,16 +24,29 @@
             </ul>
             
             <div class="w-80 bg-white p-16 text-center mx-auto border">
-                
+               
                 <div x-show="activeTab===0">
                     <div id="container">
-                        <h1>・テーブル1 <input type="number" id="table-people1" min="1" max="15" >人</h1>
+                            {{-- 総人数 --}}
+                        @php
+                            $totalRows = App\Models\Member::count();
+                            $additionalRange = 5; // 追加の範囲を指定してください
+                        @endphp
+                        <div>総人数は<select name="count">
+                        @for ($i = $totalRows - $additionalRange; $i <= $totalRows + $additionalRange; $i++)
+                            <option value="{{ $i }}">{{ $i }}</option>
+                        @endfor
+                    </select>人です
+                </div>
+                        <h1>テーブル1 <input type="number" id="table-people1" min="1" max="15" >人</h1>
                     </div>
-                    <button class="add-button">add</button>
+                    <button class="add-button">追加
+                    </button>
 
                     <br>
                     
-                    <button onclick="seatChange()">席決めスタート</button>
+                    <button id="distributeButton" >席決めスタート</button><br>
+                    ________________________________________________________
                     <div id="members-container" class="grid grid-cols-2 gap-4">
                         @foreach ($members as $member)
                         <div class="flex items-center flex-col">
