@@ -74,7 +74,8 @@ class MemberController extends Controller
             $member->save();
 
             //テーブルに保存
-            return redirect('/event')->with('success','登録しました！');
+            return redirect('/event' . "/" . $request->event_id)->with('registrationCompletedMessage','ご登録ありがとうございます！');
+            
     }
 
     /**
