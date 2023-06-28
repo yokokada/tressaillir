@@ -54,6 +54,7 @@ class MemberController extends Controller
         //     //以下に登録処理を記述（Eloquentモデル）
         // Eloquentモデル カラム名をデータベースに情報を保存する
         //ディレクトリ名
+
         $dir = 'img';
         $file_name = time() . '.' . $request->file('icon')->getClientOriginalName();
         // $request->file('icon')->move(public_path('img'), $file_name);
@@ -73,7 +74,7 @@ class MemberController extends Controller
             $member->save();
 
             //テーブルに保存
-            return redirect('/index')->with('success','登録しました！');
+            return redirect('/event')->with('success','登録しました！');
     }
 
     /**
