@@ -16,12 +16,6 @@ class EventController extends Controller
         return view('event-index', ['events' => $events]);
     }
 
-    public function event()
-    {
-        $events = Event::orderBy('created_at', 'asc')->get();
-            return view('components/event-show', ['events' => $events]);
-    }
-
     /**
      * Show the form for creating a new resource.
      */
