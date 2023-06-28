@@ -13,6 +13,7 @@
     <div class="flex justify-center items-center h-screen">
         <!--actual component start-->
         <div x-data="setup()">
+            {{-- タブ --}}
             <ul class="flex justify-center items-center my-4">
                 <template x-for="(tab, index) in tabs" :key="index">
                     <li class="cursor-pointer py-2 px-4 text-gray-500 border-b-8"
@@ -20,10 +21,18 @@
                         x-text="tab"></li>
                 </template>
             </ul>
-    
+            
             <div class="w-80 bg-white p-16 text-center mx-auto border">
                 
                 <div x-show="activeTab===0">
+                    <div id="container">
+                        <h1>・テーブル1 <input type="number" id="table-people1" min="1" max="15" >人</h1>
+                    </div>
+                    <button class="add-button">add</button>
+
+                    <br>
+                    
+                    <button onclick="seatChange()">席決めスタート</button>
                     <div id="members-container" class="grid grid-cols-2 gap-4">
                         @foreach ($members as $member)
                         <div class="flex items-center flex-col">
@@ -32,9 +41,9 @@
                         </div>
                         @endforeach
                     </div>
-                    <button onclick="seatChange()">席決めスタート</button>
                 </div>
-
+                
+                    {{-- トータルファースト飲み物 --}}
                 <div x-show="activeTab===1">
                     <div id="firstdrink-container">
                         @php
@@ -63,7 +72,6 @@
                         </div>
                         @endforeach
                     </div>
-
                 </div>
             </div>
         </div>
@@ -80,6 +88,24 @@
         };
       };
     </script>
+
+<script>
+    //テーブル追加する
+    document.addEventListener('DOMContentLoaded', function() {
+        // addボタンのクリックイベントを処理
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('add-button')) {
+                event.preventDefault();
+                // 行を複製して追加
+                var container = document.getElementById('container');
+                var row = document.querySelector('#container h1');
+                var newRow = row.cloneNode(true);
+                newRow.innerHTML = newRow.innerHTML.replace('テーブル1', 'テーブル' + (container.children.length + 1));
+                container.appendChild(newRow);
+            }
+        });
+    });
+</script>
 
 
 <script>
