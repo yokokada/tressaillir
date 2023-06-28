@@ -15,13 +15,19 @@
 <body class=text-red-700>
   <header class="bg-red-700 p-3">
     <nav class="flex justify-between items-center justify-center">
-        @foreach ($events as $event)
-        <div>
-          <p class="text-lg font-bold text-white ">{{ $event->event }}</p>
-        </div>
-        @endforeach
+      @foreach ($events as $event)
+      <div>
+        <p class="text-lg font-bold text-white ">{{ $event->event }}</p>
+      </div>
+      @endforeach
     </nav>
   </header>
+  
+  @if (session('registrationCompletedMessage'))
+  <div class="registrationCompletedMessage text-green-600 font-bold text-center">
+    {{ session('registrationCompletedMessage') }}
+  </div>
+  @endif
 
   <!-- 飲み会情報を表示 -->
   <div id="events-container" class="mt-7 flex justify-center">
