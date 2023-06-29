@@ -16,6 +16,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// ーーーーーーーーーーーートップ画像ーーーーーーーーーーーーーーーー
+Route::get('/', function () {
+    return view('/welcome');
+});
+
 // ーーーーーーーーーーーーイベント登録関係ーーーーーーーーーーーーーーーー
 //イベント情報入力画面 event-cordinator.blade.php
 Route::get('/event-cordinator', [EventController::class, "eventCordinatorForm"]);
