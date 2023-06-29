@@ -39,7 +39,6 @@ class EventController extends Controller
         $event->time     = $request->time;
         $event->event_place      = $request->event_place;
         $event->place_url        = $request->place_url;
-        $event->event_url        = $request->event_url;
         $event->save();
 
         //テーブルに保存
