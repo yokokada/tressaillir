@@ -5,17 +5,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>飲み会前画面</title>
-  <!-- Noto Sansのフォントを追加 -->
   <style>
+    .hidden {display: none;}
   </style>
-  <!-- Tailwind CSSのリンク -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.17/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
 <body class=text-red-700>
   <header class="bg-red-700 p-3">
-    <nav class="flex justify-between items-center justify-center">
+    <nav class="flex justify-between items-center">
+      <div class="text-white text-lg font-bold">
+          <p>{{ $event->event }}</p>
+      </div>
+      <button id="menu-toggle" class="text-white p-2 rounded-md">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
     </nav>
+    <div id="menu" class="hidden py-2 flex flex-col items-end">
+      <a href="#" class="block text-white px-4 py-2">メニュー項目1</a>
+      <a href="#" class="block text-white px-4 py-2">メニュー項目2</a>
+      <a href="#" class="block text-white px-4 py-2">メニュー項目3</a>
+    </div>
   </header>
   
   @if (session('registrationCompletedMessage'))
@@ -27,14 +39,14 @@
   <!-- 飲み会情報を表示 -->
   <div id="events-container" class="mt-7 flex justify-center">
     <div>
-      日程
-      <p class="text-4xl font-bold mb-3">{{ $event->date }}</p>
-      時間
-      <p class="text-4xl font-bold mb-3">{{ $event->time }}</p>
-      店の名前
-      <p class="text-4xl font-bold mb-3">{{ $event->event_place }}</p>
-      住所
-      <p class="text-4xl font-bold mb-3">{{ $event->place_url }}</p>
+      <p class="text-lg flex justify-center">日程</p>
+      <p class="text-4xl font-bold mb-5 flex justify-center">{{ $event->date }}</p>
+      <p class="text-lg flex justify-center">時間</p>
+      <p class="text-4xl font-bold mb-5 flex justify-center">{{ $event->time }}</p>
+      <p class="text-lg flex justify-center">お店の名前</p>
+      <p class="text-4xl font-bold mb-5 flex justify-center">{{ $event->event_place }}</p>
+      <p class="text-lg flex justify-center">住所</p>
+      <p class="text-xl font-bold mb-5 flex justify-center">{{ $event->place_url }}</p>
     </div>
   </div>
 
@@ -48,6 +60,13 @@
     </div>
     @endforeach
   </div>
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('menu');
+  
+    menuToggle.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+  </script>
 </body>
-
 </html>
