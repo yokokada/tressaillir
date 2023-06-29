@@ -1,14 +1,11 @@
 <!DOCTYPE html>
-<html lang="jn">
+<html lang="ja">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>飲み会前画面</title>
-  <style>
-    .hidden {display: none;}
-  </style>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.17/dist/tailwind.min.css" rel="stylesheet">
+  <title>Document</title>
+  @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body class=text-red-700>

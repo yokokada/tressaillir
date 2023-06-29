@@ -1,17 +1,13 @@
 <!DOCTYPE html>
-<html lang="jp">
+<html lang="ja">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>飲み会一覧画面</title>
-  <style>
-    .hidden {display: none;}
-  </style>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.17/dist/tailwind.min.css" rel="stylesheet">
-
+  <title>Document</title>
   @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
+
 <body class=text-red-700>
   <header class="bg-red-700 p-3">
     <nav class="flex justify-between items-center">
@@ -27,7 +23,7 @@
     <div id="menu" class="hidden py-2 flex flex-col items-end">
       <a href="#" class="block text-white px-4 py-2">メニュー項目1</a>
       <a href="#" class="block text-white px-4 py-2">メニュー項目2</a>
-      <a href="#" class="block text-white px-4 py-2">メニュー項目3</a>
+      <a href="/event-cordinator" class="block text-white px-4 py-2">戻る</a>
     </div>
   </header>
   
@@ -40,7 +36,6 @@
     {{-- <a href="event-detail/id={{ $event->id }}"><p class="text-lg">{{ $event->event }}</p></a> --}}
   </div>
   @endforeach
-  <a href="/event-cordinator" class="mt-14 ml-14 flex">戻る</a>
 
   <script>
     const menuToggle = document.getElementById('menu-toggle');
