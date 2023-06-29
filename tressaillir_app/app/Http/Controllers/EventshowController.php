@@ -25,17 +25,16 @@ class EventshowController extends Controller
     public function show($eid)
     {
         // テーブル1からデータを取得
-        $members = Member::where('event_id', '=', $eid)->get();
+        // $members = Member::where('event_id', '=', $eid)->get();
         // テーブル2からデータを取得
-        $events = Event::where('id', '=', $eid)->get();
+        $event = Event::where('id', '=', $eid)->first();
 
         // ビューを表示し、データを渡す
-        return view('event', [
-            'members' => $members,
-            'events' => $events,
-        ]);
+        // return view('event', [
+        //     // 'members' => $members,
+        //     // $eventをeventという名前で渡す。渡した先では$つければ使える
+        //     'event' => $event,
+        // ]);
+        return view('event', compact('event'));
     }
 }
-
-
-    

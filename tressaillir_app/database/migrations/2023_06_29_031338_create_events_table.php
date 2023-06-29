@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('time');
             $table->string('event_place');
             $table->string('place_url');
-            $table->string('event_url');
-            $table->rememberToken();
+            // $table->string('event_url');
+            // $table->rememberToken();
             $table->timestamps();
         });
     }
