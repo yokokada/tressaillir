@@ -26,14 +26,17 @@
       <a href="/event-cordinator" class="block text-white px-4 py-2">戻る</a>
     </div>
   </header>
-  
+
   @foreach ($events as $event)
   <div class="mt-7 ml-14 flex justify-start hover:bg-yellow-200">
     <a href="event-detail/{{ $event->id }}">
       <p class="text-2xl font-medium mt-7">{{ $event->date }}　{{ $event->time }}</p>
       <h1 class="mt-4 text-6xl font-bold ">{{ $event->event }}</h1>
+      <p>{{ url("/create/{$event->id}") }}</p>
     </a>
-    {{-- <a href="event-detail/id={{ $event->id }}"><p class="text-lg">{{ $event->event }}</p></a> --}}
+    {{-- <a href="event-detail/id={{ $event->id }}">
+      <p class="text-lg">{{ $event->event }}</p>
+    </a> --}}
   </div>
   @endforeach
 
@@ -46,4 +49,5 @@
     });
   </script>
 </body>
+
 </html>
