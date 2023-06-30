@@ -29,7 +29,8 @@
 
   @foreach ($events as $event)
   <div class="mt-7 ml-14 flex justify-start hover:bg-yellow-200">
-    <a href="event-detail/{{ $event->id }}">
+    {{-- <a href="event-detail/{{ $event->id }}"> --}}
+    <a href="event/{{ $event->id }}">
       <p class="text-2xl font-medium mt-7">{{ $event->date }}　{{ $event->time }}</p>
       <h1 class="mt-4 text-6xl font-bold ">{{ $event->event }}</h1>
       <p>{{ url("/create/{$event->id}") }}</p>
