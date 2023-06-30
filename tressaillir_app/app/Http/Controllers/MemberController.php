@@ -78,6 +78,12 @@ class MemberController extends Controller
             
     }
 
+    public function pay(Member $member)
+    {
+        $members = Member::orderBy('created_at', 'asc')->get();
+        // return view('members')->with('members',$members);
+            return view('pay', ['members' => $members]);
+    }
     /**
      * Display the specified resource.
      */
