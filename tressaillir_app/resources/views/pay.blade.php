@@ -54,24 +54,7 @@
             <button id="send-btn"class="text-right border border-gray-300" type="submit">みんなに送信！</button><br><br>
         </div>
     </div>
-    <!-- 終了画面 -->
-    <div>
-        <div>
-            <p>楽しかったですね！</p>
-            <p>また飲みましょう！</p><br>
-        </div>
-        <div>
-            <p>お会計額は</p>
-            <p><input type="text" class="text-right border border-gray-300" >円です</p><br>
-        </div>
-        <div>
-            <p>このデータは</p>
-            <p>1時間後に消去されます</p><br>
-        </div>
-        <div>
-            <p>２次会の場所はコチラ</p>
-        </div>
-    </div>
+    
       
     <!-- 割り勘計算JS -->
     <script>

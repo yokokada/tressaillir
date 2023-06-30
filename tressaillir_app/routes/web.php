@@ -46,8 +46,10 @@ Route::get('/event/{eid}', [EventshowController::class, 'show']);
 
 //席替え表示画面 index.blade.php
 Route::get('/index', [MemberController::class, "index"]);
-// 飲み会終了後お会計画面 pay.blade.php
+// お会計画面 pay.blade.php
 Route::get('/pay', [MemberController::class, "pay"]);
+// 飲み会終了画面 close.blade.php
+Route::get('/close', [MemberController::class, "close"]);
 
 // ーーーーーーーーーーログイン認証ーーーーーーーーーーーーーーーーーーーーー
 // ブリーズの登録画面

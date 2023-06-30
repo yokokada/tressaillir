@@ -87,9 +87,11 @@ class MemberController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Member $member)
+    public function close(Member $member)
     {
-        //
+        $members = Member::orderBy('created_at', 'asc')->get();
+        // return view('members')->with('members',$members);
+        return view('close', ['members' => $members]);
     }
 
     /**
