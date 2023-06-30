@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Member;
 use App\Models\Event;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class EventshowController extends Controller
 {
@@ -27,7 +29,9 @@ class EventshowController extends Controller
         // テーブル1からデータを取得
         // $members = Member::where('event_id', '=', $eid)->get();
         // テーブル2からデータを取得
-        $event = Event::where('id', '=', $eid)->first();
+        $event = Event::with('members')->where('user_id', Auth::user()->id)->find($eid);
+        // $event = Event::with('members')->find($eid);
+        // $event = Event::find($eid)->first();
 
         // ビューを表示し、データを渡す
         // return view('event', [

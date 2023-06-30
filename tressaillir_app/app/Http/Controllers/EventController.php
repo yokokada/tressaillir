@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator; //この2行を追加！
+use Illuminate\Support\Facades\Auth;  
 
 class EventController extends Controller
 {
@@ -12,7 +14,7 @@ class EventController extends Controller
      */
     public function index()
     {
-        $events = Event::orderBy('created_at', 'asc')->get();
+        $events = Event::where('user_id', Auth::user()->id)->orderBy('created_at', 'asc')->get();
         return view('event-index', ['events' => $events]);
     }
 
@@ -34,6 +36,7 @@ class EventController extends Controller
     public function store(Request $request)
     {
         $event = new Event;
+        $event->user_id  = Auth::user()->id;
         $event->event   = $request->event;
         $event->date     = $request->date;
         $event->time     = $request->time;
