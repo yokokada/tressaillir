@@ -19,22 +19,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// メンバーテーブルのカウント総数を取得するAPIエンドポイント
-Route::get('/members/total', function () {
-    $total = Member::count();
-    return response()->json(['total' => $total]);
-});
-
-// メンバーテーブルのアイコン情報を取得するAPIエンドポイント
-Route::get('/members/icons', function () {
-    $icons = Member::pluck('icon_filename')->toArray();
-    return response()->json(['icons' => $icons]);
-});
-
-// メンバーの名前を取得するAPIエンドポイント
-Route::get('/members/nicknames', function (Request $request) {
-    $members = Member::all();
-    $nicknames = $members->pluck('nickname')->toArray();
-
-    return response()->json($nicknames);
+// メンバーテーブルのカウント総数と女性の数を取得するAPIエンドポイント
+Route::get('/get-gender-counts', function () {
+    $totalMembers = Member::count();
+    $womenCount = Member::where('sex', 1)->count();
+    return response()->json(['totalMembers' => $totalMembers, 'womenCount' => $womenCount]);
 });
