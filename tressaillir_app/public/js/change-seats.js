@@ -1,5 +1,5 @@
 // 指定した色のリストを作成
-var colorList = ['#FF0000', '#00FF00', '#5C77D9', '#FFFF00', '#00FFFF', '#FF00FF'];
+var colorList = ['#64cded', '#FCD34D', '#22C65F', '#fa6161'];
 
 var colorIndex = 0; // 新たに色のインデックスを管理する変数を追加
 
@@ -69,7 +69,10 @@ distributeButton.addEventListener('click', function() {
           var memberElement = members[startIndex + j];
           var nicknameElement = memberElement.querySelector('.text-lg');
 
-          nicknameElement.style.backgroundColor = tableColor;
+          // メンバーの要素を四角で囲むためのスタイルを設定
+          nicknameElement.style.border = '4px solid ' + tableColor;
+          nicknameElement.style.borderRadius = '7px';
+          nicknameElement.style.padding = '5px';
         }
 
         // 次のテーブルのメンバーの開始インデックスを更新
