@@ -34,14 +34,14 @@ Route::get('/event-detail/{id}', [EventController::class, "show"])->middleware([
 
 // ーーーーーーーーーーーー参加者登録関係ーーーーーーーーーーーーーーーー
 //参加者情報入力画面 create.blade.php
-Route::get('/create/{id}', [MemberController::class, "createForm"]);
+Route::get('/create/{id}', [MemberController::class, "createForm"])->name('participantsForm');
 // Route::get('/create', [MemberController::class, "createForm"]);
 //参加者入力フォームのデータ登録 ファイルなし
 Route::post('/members', [MemberController::class, "store"]);
 
 // ーーーーーーーーーーーー表示関係ーーーーーーーーーーーーーーーーーーー
 // 飲み会前画面 event.blade.php
-Route::get('/event/{eid}', [EventshowController::class, 'show'])->name('event.show')->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/event/{eid}', [EventshowController::class, 'show']);
 // Route::get('/event/{eid}', [EventshowController::class, 'index']);
 
 //席替え表示画面 index.blade.php
