@@ -13,13 +13,12 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('user_id');
             $table->string('event');
             $table->date('date');
             $table->string('time');
             $table->string('event_place');
             $table->string('place_url');
-            // $table->string('event_url');
-            // $table->rememberToken();
             $table->timestamps();
         });
     }

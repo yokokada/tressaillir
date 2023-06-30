@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Member;
 use Illuminate\Http\Request;
 
-use Illuminate\Support\Facades\Validator; 
-use Illuminate\Support\Facades\Auth;  
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+
 
 class MemberController extends Controller
 {
@@ -17,7 +18,7 @@ class MemberController extends Controller
     {
         $members = Member::orderBy('created_at', 'asc')->get();
         // return view('members')->with('members',$members);
-            return view('index', ['members' => $members]);
+        return view('index', ['members' => $members]);
     }
 
 
@@ -61,28 +62,27 @@ class MemberController extends Controller
         $request->file('icon')->storeAs('public/' . $dir, $file_name);
 
 
-            $member = new Member;
-            $member->kanri_flag   = $request->kanri_flag;
-            $member->nickname     = $request->nickname;
-            $member->icon         = 'storage/' . $dir . '/' . $file_name;
-            // $member->icon         = $request->icon;
-            $member->hobby        = $request->hobby;
-            $member->sex          = $request->sex;
-            $member->firstdrink   = $request->firstdrink;
-            $member->main_guest   = $request->main_guest;
-            $member->event_id     = $request->event_id;
-            $member->save();
+        $member = new Member;
+        $member->kanri_flag   = $request->kanri_flag;
+        $member->nickname     = $request->nickname;
+        $member->icon         = 'storage/' . $dir . '/' . $file_name;
+        // $member->icon         = $request->icon;
+        $member->hobby        = $request->hobby;
+        $member->sex          = $request->sex;
+        $member->firstdrink   = $request->firstdrink;
+        $member->main_guest   = $request->main_guest;
+        $member->event_id     = $request->event_id;
+        $member->save();
 
-            //テーブルに保存
-            return redirect('/event' . "/" . $request->event_id)->with('registrationCompletedMessage','ご登録ありがとうございます！');
-            
+        //テーブルに保存
+        return redirect('/event' . "/" . $request->event_id)->with('registrationCompletedMessage', 'ご登録ありがとうございます！');
     }
 
     public function pay(Member $member)
     {
         $members = Member::orderBy('created_at', 'asc')->get();
         // return view('members')->with('members',$members);
-            return view('pay', ['members' => $members]);
+        return view('pay', ['members' => $members]);
     }
     /**
      * Display the specified resource.
