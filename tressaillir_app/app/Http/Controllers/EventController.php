@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator; //この2行を追加！
-use Illuminate\Support\Facades\Auth;  
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
@@ -42,6 +43,7 @@ class EventController extends Controller
         $event->time     = $request->time;
         $event->event_place      = $request->event_place;
         $event->place_url        = $request->place_url;
+        $event->hash = Str::random(20);
         $event->save();
 
         //テーブルに保存
@@ -54,7 +56,7 @@ class EventController extends Controller
     public function show($id)
     {
         $event = Event::find($id);
-        return view('event-detail')->with('event' , $event);
+        return view('event-detail')->with('event', $event);
     }
 
     /**

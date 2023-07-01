@@ -24,12 +24,12 @@ class EventshowController extends Controller
     // ]);
     // }
 
-    public function show($eid)
+    public function show($id, $hash)
     {
         // テーブル1からデータを取得
         // $members = Member::where('event_id', '=', $eid)->get();
         // テーブル2からデータを取得
-        $event = Event::with('members')->where('user_id', Auth::user()->id)->find($eid);
+        $event = Event::with('members')->where('user_id', Auth::user()->id)->find($id);
         // $event = Event::with('members')->find($eid);
         // $event = Event::find($eid)->first();
 
@@ -39,6 +39,9 @@ class EventshowController extends Controller
         //     // $eventをeventという名前で渡す。渡した先では$つければ使える
         //     'event' => $event,
         // ]);
+        if (!$event || $event->hash !== $hash) {
+            abort(403, 'アクセスエラーです');
+        }
         return view('event', compact('event'));
     }
 }
