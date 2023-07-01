@@ -45,7 +45,7 @@ Route::get('/event/{eid}', [EventshowController::class, 'show']);
 // Route::get('/event/{eid}', [EventshowController::class, 'index']);
 
 //席替え表示画面 index.blade.php
-Route::get('/index', [MemberController::class, "index"]);
+Route::get('/index/{id}', [MemberController::class, "index"]);
 // お会計画面 pay.blade.php
 Route::get('/pay', [MemberController::class, "pay"]);
 // 飲み会終了画面 close.blade.php
