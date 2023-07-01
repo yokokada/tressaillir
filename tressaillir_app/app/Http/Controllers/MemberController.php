@@ -14,10 +14,11 @@ class MemberController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($id)
     {
-        $members = Member::orderBy('created_at', 'asc')->get();
-        // return view('members')->with('members',$members);
+        // $members = Member::orderBy('created_at', 'asc')->get();
+        $members = Member::where('event_id', $id)->orderBy('created_at', 'asc')->get();
+        // $event_title = Member::where('event',)
         return view('index', ['members' => $members]);
     }
 
