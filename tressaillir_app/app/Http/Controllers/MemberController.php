@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Member;
+use App\Models\Event;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Validator;
@@ -14,9 +14,10 @@ class MemberController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index($id)
+    public function index($id, $hash)
     {
         // $members = Member::orderBy('created_at', 'asc')->get();
+        $event = Event::find($id);
         $members = Member::where('event_id', $id)->orderBy('created_at', 'asc')->get();
         $total_member = Member::where('event_id', $id)->count();
         $event_title = Member::where('event_id', $id)->first();
@@ -28,6 +29,9 @@ class MemberController extends Controller
         //     'total_member' => $total_member
         // ]);
         //
+        if (!$event || $event->hash !== $hash) {
+            abort(403, 'アクセスエラーです');
+        }
         return view('index', compact('members', 'total_member', 'event_title'));
     }
 
@@ -36,11 +40,15 @@ class MemberController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function createForm($id)
+    public function createForm($id, $hash)
     {
+        $event = Event::find($id);
+        // イベントが見つからない、またはハッシュが一致しない場合は403エラー
+        if (!$event || $event->hash !== $hash) {
+            abort(403, 'アクセスエラーです');
+        }
         return view('create', ['id' => $id]);
     }
-
 
     /**
      * Store a newly created resource in storage.
