@@ -18,10 +18,20 @@ class MemberController extends Controller
     {
         // $members = Member::orderBy('created_at', 'asc')->get();
         $members = Member::where('event_id', $id)->orderBy('created_at', 'asc')->get();
+        $total_member = Member::where('event_id', $id)->count();
+        $event_title = Member::where('event_id', $id)->first();
         // $event_title = Member::where('event',)
-        return view('index', ['members' => $members]);
+        // return view('index', ['members' => $members],['event_title' => $event_title],['$total_member' => $total_member]);
+        // return view('index', [
+        //     'members' => $members,
+        //     'event_title' => $event_title,
+        //     'total_member' => $total_member
+        // ]);
+        //
+        return view('index', compact('members', 'total_member', 'event_title'));
     }
 
+        // $event = Event::with('members')->where('user_id', Auth::user()->id)->find($eid);
 
     /**
      * Show the form for creating a new resource.
