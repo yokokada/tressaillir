@@ -15,8 +15,11 @@
 <body>
     <div class="flex justify-center items-center min-w-screen flex-col">
         <div class="relative">
-            <img src="{{ asset('img/nomoca.jpg') }}" class="w-full object-contain" alt="Top Image">
-            <a href="#" class="absolute bottom-32 left-1/2 transform -translate-x-1/2 px-28 py-6 bg-white hover:bg-yellow-200 text-red-700 font-bold rounded">START</a>
+            <video autoplay loop muted class="w-full object-cover">
+                <source src="{{ asset('video/Nomoca_welcome.mp4') }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <a href="/event-cordinator" class="absolute bottom-28 left-1/2 transform -translate-x-1/2 px-28 py-6 bg-white hover:bg-yellow-300 text-red-600 font-bold text-3xl rounded-2xl">START</a>
         </div>
     </div>
     <script src="{{ asset('js/app.js') }}"></script>

@@ -10,7 +10,7 @@
 
 <body>
 
-  <header class="bg-red-700 p-3">
+  <header class="bg-red-600 p-3">
     <nav class="flex justify-between items-center">
       <div class="text-white text-lg font-bold">
         <h1>飲み会登録画面</h1>
@@ -34,35 +34,35 @@
       <div class="col-span-2">
         <label class="block">
           飲み会名
-          <input name="event" class="form-input p-2.5 w-full text-sm text-gray-900 bg-gray-200 rounded-lg border border-gray-400 focus:border-red-600 focus:ring-0" type="text" placeholder="">
+          <input name="event" class="form-input p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-400 focus:border-red-600 focus:ring-0" type="text" placeholder="">
         </label>
       </div>
       <div>
         <label class="block">
           日程
-          <input name="date" class="form-input p-2.5 w-full text-sm text-gray-900 bg-gray-200 rounded-lg border border-gray-400 focus:border-red-600 focus:ring-0" type="date" placeholder="">
+          <input name="date" class="form-input p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-400 focus:border-red-600 focus:ring-0" type="date" placeholder="">
         </label>
       </div>
       <div>
         <label class="block">
           時間
-          <input name="time" class="form-input p-2.5 w-full text-sm text-gray-900 bg-gray-200 rounded-lg border border-gray-400 focus:border-red-600 focus:ring-0" type="time" placeholder="">
+          <input name="time" class="form-input p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-400 focus:border-red-600 focus:ring-0" type="time" placeholder="">
         </label>
       </div>
       <div class="col-span-2">
         <label class="block">
           店名
-          <input name="event_place" class="form-input p-2.5 w-full text-sm text-gray-900 bg-gray-200 rounded-lg border border-gray-400 focus:border-red-600 focus:ring-0" type="text" placeholder="">
+          <input name="event_place" class="form-input p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-400 focus:border-red-600 focus:ring-0" type="text" placeholder="">
         </label>
       </div>
       <div class="col-span-2">
         <label class="block">
           マップURL
-          <input name="place_url" class="form-input p-2.5 w-full text-sm text-gray-900 bg-gray-200 rounded-lg border border-gray-400 focus:border-red-600 focus:ring-0" type="text" placeholder="">
+          <input name="place_url" class="form-input p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-400 focus:border-red-600 focus:ring-0" type="text" placeholder="">
         </label>
       </div>
       <div class="col-span-2">
-        <button class="mt-14 absolute left-1/2 transform -translate-x-1/2 px-20 py-4 bg-red-700 hover:bg-yellow-500 text-white text-2xl font-bold rounded" type="submit">登録</button>
+        <button class="mt-14 absolute left-1/2 transform -translate-x-1/2 px-24 py-6 bg-red-600 hover:bg-yellow-300 text-white text-2xl font-bold rounded-2xl" type="submit">登録</button>
       </div>
     </div>
   </form>

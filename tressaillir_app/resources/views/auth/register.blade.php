@@ -1,17 +1,9 @@
 <x-guest-layout>
-    @if (Route::has('login'))
-    <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-        @auth
-        <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
-        @else
-        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
-    
-        @if (Route::has('register'))
-        <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-        @endif
-        @endauth
+    <!-- ロゴの追加 -->
+    <div class="logo-container">
+        <img src="{{ asset('img/nomoca_w.png') }}" alt="Logo">
     </div>
-    @endif
+
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
@@ -62,4 +54,15 @@
             </x-primary-button>
         </div>
     </form>
+    <style>
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 40vh; /* ロゴの高さを指定（例ではページの60%に設定） */
+            width: 70%;
+            margin-left: auto; /* 左右の余白を自動調整 */
+            margin-right: auto;
+        }
+    </style>
 </x-guest-layout>
