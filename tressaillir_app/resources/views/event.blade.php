@@ -12,7 +12,7 @@
   <header class="bg-red-700 p-3">
     <nav class="flex justify-between items-center">
       <div class="text-white text-lg font-bold">
-          <p>{{ $event->event }}</p>
+          {{-- <p>{{ $event->event }}</p> --}}
       </div>
       <button id="menu-toggle" class="text-white p-2 rounded-md">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
