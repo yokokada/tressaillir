@@ -108,6 +108,14 @@
                         @endforeach
                     </div>
                 </div>
+                <!-- 以下、飲み会終了タブ -->
+                <div x-show="activeTab===2">
+                    <p class="mb-2"> 飲み会終了であれば
+                        <br>以下のボタンを押して
+                        <br>お会計入力画面に進んでください</p><br>
+                    <button id="endButton" class="border border-gray-500 rounded-lg px-4 py-2">飲み会終了</button>
+
+                </div>
             </div>
         </div>
     </div>
@@ -120,6 +128,7 @@
           tabs: [
               "席決め",
               "ファーストドリンク",
+              "飲み会終了"
           ]
         };
       };
