@@ -57,6 +57,8 @@
     </div>
     @endforeach
   </div>
+  <!-- 飲み会開始ボタン -->
+  <button id="send-btn" class="mt-16 absolute left-1/2 transform -translate-x-1/2 px-20 py-4 bg-red-700 hover:bg-yellow-500 text-white text-2xl font-bold rounded" type="submit">飲み会開始！</button>
   <script>
     const menuToggle = document.getElementById('menu-toggle');
     const menu = document.getElementById('menu');
