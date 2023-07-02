@@ -4,29 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>終了画面</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body>
-    <div>
+<body class=text-red-700>
+ <header class="bg-red-700 p-3">
+     <nav class="flex justify-between items-center">
+        <div class="text-white text-lg font-bold">
+            {{-- <p>{{ $event->event }}</p> --}}
+        </div>
+        <button id="menu-toggle" class="text-white p-2 rounded-md">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+        </nav>
+        <div id="menu" class="hidden py-2 flex flex-col items-end">
+        <a href="#" class="block text-white px-4 py-2">メニュー項目1</a>
+        <a href="#" class="block text-white px-4 py-2">メニュー項目2</a>
+        <a href="#" class="block text-white px-4 py-2">メニュー項目3</a>
+        </div>
+   </header>
+    <div id="end-massege" class="mt-7 flex justify-center">
             <div>
-                <p>楽しかったですね！</p>
-                <p>また飲みましょう！</p><br>
-            </div>
-            <div>
-                <p>女性のお会計額は</p>
-                <p id="womenAmount"></p><br>
-                <p>男性やそれ以外の方のお会計は</p>
-                <p id="menAmount"></p><br>
-            </div>
-            <div>
-                <p>このデータは</p>
-                <p><div id="countdown"></div>後に消去されます</p><br>
+                <p class="text-4xl font-bold mb-5 flex justify-center">楽しかったですね！<br>また飲みましょう！</p></br>
+                <p class="text-lg flex justify-center">女性のお会計額は</p>
+                <p class="text-4xl font-bold mb-5 flex justify-center" id="womenAmount"></p>
+                <p class="text-lg flex justify-center">女性以外の方のお会計は</p>
+                <p class="text-4xl font-bold mb-5 flex justify-center" id="menAmount"></p><br>
 
-            </div>
-            <div>
-                <p>２次会の場所はコチラ</p>
-                <p id="eventPlace"></p>
-                <a id="placeUrl">地図を見る</a>
-            </div>
+                <p class="text-xl font-bold mb-5 flex justify-center">このデータは<div id="countdown"class="text-4xl font-bold mb-5 flex justify-center"></div>
+                <p class="text-xl font-bold mb-5 flex justify-center">後に消去されます</p><br><br>
+
+                <p class="text-4xl font-bold mb-5 flex justify-center">２次会の場所はコチラ</p><br>
+                <p class="text-lg flex justify-center">お店の名前</p>
+                <p id="eventPlace" class="text-4xl font-bold mb-5 flex justify-center"></p>
+                <p class="text-lg flex justify-center">住所</p>
+                <a id="placeUrl" class="text-xl font-bold mb-5 flex justify-center"></a>
+            </div>    
     </div>
     
     <script>
@@ -37,7 +51,11 @@
 
         // 取得したデータをHTMLに表示
         document.getElementById('eventPlace').innerText = eventPlace;
-        document.getElementById('placeUrl').href = placeUrl;
+        // URLをそのまま表示
+        var placeUrlElement = document.getElementById('placeUrl');
+        placeUrlElement.href = placeUrl;
+        placeUrlElement.innerText = placeUrl;
+
 
         // お会計額も取得し表示
         var menAmount = localStorage.getItem('menAmount');
