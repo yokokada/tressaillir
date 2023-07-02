@@ -6,7 +6,7 @@
     <title>終了画面</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class=text-red-700>
+<body >
     <header class="bg-red-700 p-3">
         <nav class="flex justify-between items-center">
             <h1 class="text-white font-bold">
@@ -26,16 +26,16 @@
     </header>
     <div id="end-massege" class="mt-7 flex justify-center">
             <div>
-                <p class="text-4xl font-bold mb-5 flex justify-center">楽しかったですね！<br>また飲みましょう！</p></br>
+                <p class="text-4xl font-bold mb-5 flex justify-center text-red-700">楽しかったですね！<br>また飲みましょう！</p></br>
                 <p class="text-lg flex justify-center">女性のお会計額は</p>
                 <p class="text-4xl font-bold mb-5 flex justify-center" id="womenAmount"></p>
                 <p class="text-lg flex justify-center">女性以外の方のお会計は</p>
                 <p class="text-4xl font-bold mb-5 flex justify-center" id="menAmount"></p><br>
 
-                <p class="text-xl font-bold mb-5 flex justify-center">このデータは<div id="countdown"class="text-4xl font-bold mb-5 flex justify-center"></div>
+                <p class="text-xl font-bold mb-5 flex justify-center">このデータは<div id="countdown"class="text-4xl font-bold mb-5 flex justify-center text-red-700"></div>
                 <p class="text-xl font-bold mb-5 flex justify-center">後に消去されます</p><br><br>
 
-                <p class="text-4xl font-bold mb-5 flex justify-center">２次会の場所はコチラ</p><br>
+                <p class="text-4xl font-bold mb-5 flex justify-center text-red-700">２次会の場所はコチラ↓</p><br>
                 <p class="text-lg flex justify-center">お店の名前</p>
                 <p id="eventPlace" class="text-4xl font-bold mb-5 flex justify-center"></p>
                 <p class="text-lg flex justify-center">住所</p>
