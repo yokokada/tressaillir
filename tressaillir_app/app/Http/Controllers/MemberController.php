@@ -14,7 +14,7 @@ class MemberController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index($id, $hash)
+    public function index($id)
     {
         // $members = Member::orderBy('created_at', 'asc')->get();
         $event = Event::find($id);
@@ -29,9 +29,9 @@ class MemberController extends Controller
         //     'total_member' => $total_member
         // ]);
         //
-        if (!$event || $event->hash !== $hash) {
-            abort(403, 'アクセスエラーです');
-        }
+        // if (!$event || $event->hash !== $hash) {
+        //     abort(403, 'アクセスエラーです');
+        // }
         return view('index', compact('members', 'total_member', 'event_title'));
     }
 

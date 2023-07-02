@@ -26,7 +26,7 @@ class EventshowController extends Controller
     // ]);
     // }
 
-    public function show($id, $hash)
+    public function show($id)
     {
         // テーブル1からデータを取得
         // $members = Member::where('event_id', '=', $eid)->get();
@@ -41,9 +41,9 @@ class EventshowController extends Controller
         //     // $eventをeventという名前で渡す。渡した先では$つければ使える
         //     'event' => $event,
         // ]);
-        if (!$event || $event->hash !== $hash) {
-            abort(403, 'アクセスエラーです');
-        }
+        // if (!$event || $event->hash !== $hash) {
+        //     abort(403, 'アクセスエラーです');
+        // }
         return view('event', compact('event'));
     }
 
