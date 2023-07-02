@@ -51,7 +51,7 @@ Route::get('/index/{id}', [MemberController::class, "index"]);
 // お会計画面 pay.blade.php
 Route::get('/pay/{id}', [MemberController::class, "pay"]);
 // 飲み会終了画面 close.blade.php
-Route::get('/close', [MemberController::class, "close"]);
+Route::get('/close/{id}', [MemberController::class, "close"]);
 
 // ーーーーーーーーーーログイン認証ーーーーーーーーーーーーーーーーーーーーー
 // ブリーズの登録画面

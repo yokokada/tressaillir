@@ -10,7 +10,7 @@
     <header class="bg-red-700 p-3">
         <nav class="flex justify-between items-center">
             <h1 class="text-white font-bold">
-                {{-- <p>{{ $event_title->event }}</p> --}}
+                 <p>{{ $event_title->event->event }}</p> 
             </h1>
             <button id="menu-toggle" class="text-white p-2 rounded-md">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
@@ -128,31 +128,37 @@
             localStorage.setItem('eventPlace',eventPlace );
             localStorage.setItem('placeUrl', placeUrl);
 
-            // サーバーにリクエストを送信してデータ削除を1時間後にスケジュール
-            var eventId = 'event-id'; // 適切なイベントIDを設定してください。
-            fetch('/schedule-deletion', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                },
-                body: JSON.stringify({ event_id: eventId })
-            })
-            .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-            })
-            .then(data => {
-                // ここでデータを処理します。例えば、アラートを表示するなど:
-                alert(data.message);
-            })
-            .catch(error => {
-                // ここでエラーを処理します。例えば、コンソールにエラーメッセージを表示するなど:
-                console.error('There has been a problem with your fetch operation:', error);
+            // // サーバーにリクエストを送信してデータ削除を1時間後にスケジュール
+            // var eventId = 'event-id'; // 適切なイベントIDを設定してください。
+            // fetch('/schedule-deletion', {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //         'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            //     },
+            //     body: JSON.stringify({ event_id: eventId })
+            // })
+            // .then(response => {
+            // if (!response.ok) {
+            //     throw new Error('Network response was not ok');
+            // }
+            // return response.json();
+            // })
+            // .then(data => {
+            //     // ここでデータを処理します。例えば、アラートを表示するなど:
+            //     alert(data.message);
+                 // クリックイベントが完了した後にページ遷移を行います。
+                 var eventId = "{{ $event_title->event->id }}"; // 適切なイベントIDを設定してください。
+                 console.log(eventId)
+                 window.location.href = "/close/" +  eventId;
             });
-        });
+           
+    
+        //     .catch(error => {
+        //         // ここでエラーを処理します。例えば、コンソールにエラーメッセージを表示するなど:
+        //         console.error('There has been a problem with your fetch operation:', error);
+        //     });
+        // });
 
     </script>
     

@@ -102,17 +102,21 @@ class MemberController extends Controller
         $members = Member::orderBy('created_at', 'asc')->get();
         $event_id = $request->route('id');
         $total = Member::where('event_id', $event_id)->count() ;
+        $event_title = Member::where('event_id', $event_id)->first();
         // return view('members')->with('members',$members);
-        return view('pay', ['members' => $members, 'total' => $total]);
+        return view('pay', ['members' => $members, 'total' => $total, 'event_title'=> $event_title]);
     }
     /**
      * Display the specified resource.
      */
-    public function close(Member $member)
+    public function close(Member $member, Request $request)
     {
         $members = Member::orderBy('created_at', 'asc')->get();
+        $event_id = $request->route('id');
+        $total = Member::where('event_id', $event_id)->count() ;
+        $event_title = Member::where('event_id', $event_id)->first();
         // return view('members')->with('members',$members);
-        return view('close', ['members' => $members]);
+        return view('close', ['members' => $members,'event_title'=> $event_title]);
     }
 
     /**
