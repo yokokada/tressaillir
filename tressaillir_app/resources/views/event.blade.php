@@ -58,7 +58,7 @@
     @endforeach
   </div>
   <!-- 飲み会開始ボタン -->
-  <button id="send-btn" class="mt-16 absolute left-1/2 transform -translate-x-1/2 px-20 py-4 bg-red-700 hover:bg-yellow-500 text-white text-2xl font-bold rounded" type="submit">飲み会開始！</button>
+  <button id="start-btn" class="mt-16 absolute left-1/2 transform -translate-x-1/2 px-20 py-4 bg-red-700 hover:bg-yellow-500 text-white text-2xl font-bold rounded" type="submit">飲み会開始！</button>
   <script>
     const menuToggle = document.getElementById('menu-toggle');
     const menu = document.getElementById('menu');
@@ -66,6 +66,14 @@
     menuToggle.addEventListener('click', () => {
       menu.classList.toggle('hidden');
     });
+  </script>
+  <script>
+    // 開始ボタンのJS
+document.getElementById('start-btn').addEventListener('click', function(e) {
+    // クリックイベントが完了した後にページ遷移を行います。
+    var eventId = "{{ $event->id }}"; // 画面上の適切なイベントIDを設定してください。
+    window.location.href = "/index/" + eventId;
+});
   </script>
 </body>
 </html>
