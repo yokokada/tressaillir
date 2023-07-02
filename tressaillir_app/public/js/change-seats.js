@@ -13,6 +13,14 @@ function getNextColor() {
     return color;
 }
 
+    // ブロードキャストイベントを受信
+    window.Echo.channel('seating-arrangement.' + eventId)
+        .listen('.arrangement-updated', (data) => {
+        // 席決め後の処理を実行
+        // 他の参加者の画面を更新するコードを追加
+        // 例: 画面をリロードするか、必要なデータを再取得してDOMを更新する
+    });
+
 // 振り分けボタンを押すと、人数を振り分け
 var distributeButton = document.getElementById("distributeButton");
 distributeButton.addEventListener("click", function () {
@@ -90,6 +98,7 @@ distributeButton.addEventListener("click", function () {
 
                 // 次のテーブルのメンバーの開始インデックスを更新
                 startIndex += peopleCounts[i];
+                
             }
         })
         .catch((error) => {
