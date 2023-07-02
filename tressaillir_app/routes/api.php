@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\Member;
+use App\Http\Controllers\EventshowController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,3 +36,6 @@ Route::get('/members/total', function (Request $request) {
 });
 
 // $event = Event::with('members')->where('user_id', Auth::user()->id)->find($eid);
+
+// web.php または api.php にルートを追加
+Route::post('/schedule-deletion', [EventshowController::class, 'scheduleDeletion']);
