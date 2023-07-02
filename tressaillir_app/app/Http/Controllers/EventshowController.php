@@ -7,6 +7,8 @@ use App\Models\Member;
 use App\Models\Event;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use App\Jobs\DeleteEventContent;
+use Carbon\Carbon;
 
 class EventshowController extends Controller
 {
@@ -44,4 +46,17 @@ class EventshowController extends Controller
         }
         return view('event', compact('event'));
     }
+
+    // 1時間後に消す設定
+    public function scheduleDeletion(Request $request)
+        {
+            $eventId = $request->input('event_id');
+            
+            // ジョブを1時間後にディスパッチ
+            $when = Carbon::now()->addHour();
+            DeleteEventContent::dispatch($eventId)->delay($when);
+            
+            return response()->json(['message' => '内容は1時間後に削除されます']);
+        }
+        
 }
