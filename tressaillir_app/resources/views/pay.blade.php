@@ -51,7 +51,8 @@
             </label><br>
         </div>
         <div class="col-span-2">
-            <button id="send-btn"class="text-right border border-gray-300" type="submit">みんなに送信！</button><br><br>
+            <button id="send-btn"class="text-right border border-gray-300" type="submit">みんなに送信！</button>
+            <meta name="csrf-token" content="{{ csrf_token() }}"><br><br>
         </div>
     </div>
     
@@ -59,10 +60,10 @@
     <!-- 割り勘計算JS -->
     <script>
        document.getElementById('calculate').addEventListener('click', function() {
-    var amount = parseFloat(document.getElementById('amount').value);
-    var totalMembers = parseFloat(document.getElementById('totalMembers').value);
+        var amount = parseFloat(document.getElementById('amount').value);
+        var totalMembers = parseFloat(document.getElementById('totalMembers').value);
 
-    fetch('/api/get-gender-counts')
+        fetch('/api/get-gender-counts')
         .then(response => response.json())
         .then(data => {
         var womenCount = data.womenCount;
@@ -79,27 +80,54 @@
         }
         // 集めたお金の合計
         var totalCollected = menAmount * menCount + womenAmount * womenCount;
-
         // 余り
         var remainder = totalCollected - amount;
-
         // 結果を表示
         document.getElementById('menAmount').innerText = "男性 / 返答なし　" + menAmount + "円";
         document.getElementById('womenAmount').innerText = "女性　" + womenAmount + "円";
         document.getElementById('remainder').innerText = "余剰金　" + remainder + "円です";
-
         // 結果をローカルストレージに保存
         localStorage.setItem('menAmount', menAmount);
         localStorage.setItem('womenAmount', womenAmount);
         });
     });
+        // 送信ボタンのJS
+        document.getElementById('send-btn').addEventListener('click', function(e) {
+            // 現在の時刻をローカルストレージに保存
+            var currentTime = new Date().getTime();
+            localStorage.setItem('startTime', currentTime);
 
-    document.getElementById('send-btn').addEventListener('click', function(e) {
-        var eventPlace = document.getElementById('event_place').value;
-        var placeUrl = document.getElementById('place_url').value;
-        localStorage.setItem('eventPlace',eventPlace );
-        localStorage.setItem('placeUrl', placeUrl);
-    });
+            // その他のデータをローカルストレージに保存
+            var eventPlace = document.getElementById('event_place').value;
+            var placeUrl = document.getElementById('place_url').value;
+            localStorage.setItem('eventPlace',eventPlace );
+            localStorage.setItem('placeUrl', placeUrl);
+
+            // サーバーにリクエストを送信してデータ削除を1時間後にスケジュール
+            var eventId = 'event-id'; // 適切なイベントIDを設定してください。
+            fetch('/schedule-deletion', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                },
+                body: JSON.stringify({ event_id: eventId })
+            })
+            .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+            })
+            .then(data => {
+                // ここでデータを処理します。例えば、アラートを表示するなど:
+                alert(data.message);
+            })
+            .catch(error => {
+                // ここでエラーを処理します。例えば、コンソールにエラーメッセージを表示するなど:
+                console.error('There has been a problem with your fetch operation:', error);
+            });
+        });
 
     </script>
     

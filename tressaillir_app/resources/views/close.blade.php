@@ -19,7 +19,8 @@
             </div>
             <div>
                 <p>このデータは</p>
-                <p>1時間後に消去されます</p><br>
+                <p><div id="countdown"></div>後に消去されます</p><br>
+
             </div>
             <div>
                 <p>２次会の場所はコチラ</p>
@@ -29,7 +30,7 @@
     </div>
     
     <script>
-    window.onload = function() {
+        window.onload = function() {
         // ローカルストレージからデータを取得
         var eventPlace = localStorage.getItem('eventPlace');
         var placeUrl = localStorage.getItem('placeUrl');
@@ -44,6 +45,33 @@
         document.getElementById('menAmount').innerText = menAmount + "円です";
         document.getElementById('womenAmount').innerText = womenAmount + "円です";
     }
+        // カウントダウン表示するためのJS
+        document.addEventListener('DOMContentLoaded', function() {
+        var startTime = localStorage.getItem('startTime');
+        var endTime = new Date(parseInt(startTime) + 60 * 60 * 1000); // 1時間後
+
+        var timer = setInterval(function() {
+        var now = new Date().getTime();
+        var distance = endTime - now;
+
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+
+        // 2桁で表示
+        minutes = String(minutes).padStart(2, '0');
+        seconds = String(seconds).padStart(2, '0');
+
+        document.getElementById("countdown").innerHTML = minutes + ":" + seconds;
+
+        if (distance < 0) {
+            clearInterval(timer);
+            document.getElementById("countdown").innerHTML = "EXPIRED";
+        }
+            }, 1000);
+        });
+
+        
     </script>
 
 </body>
