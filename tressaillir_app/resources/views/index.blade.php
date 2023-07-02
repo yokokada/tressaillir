@@ -19,7 +19,8 @@
                 <button id="menu-toggle" class="text-white p-2 rounded-md">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                         class="h-6 w-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16">
                         </path>
                     </svg>
                 </button>
@@ -112,9 +113,9 @@
                 <div x-show="activeTab===2">
                     <p class="mb-2"> 飲み会終了であれば
                         <br>以下のボタンを押して
-                        <br>お会計入力画面に進んでください</p><br>
-                    <button id="endButton" class="border border-gray-500 rounded-lg px-4 py-2">飲み会終了</button>
-
+                        <br>お会計入力画面に進んでください
+                    </p><br>
+                    <a href="/pay/{{ $event_title->event->id }}" class="border border-gray-500 rounded-lg px-4 py-2">飲み会終了</a>
                 </div>
             </div>
         </div>

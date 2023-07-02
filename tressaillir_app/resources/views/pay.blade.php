@@ -33,8 +33,7 @@
                 <input class="form-input p-2.5 text-sm text-gray-900 bg-white rounded-lg border border-gray-400 focus:border-red-600 focus:ring-0 mr-2" type="text" id="amount">
                 <p class="mb-0">円</p>
             </div>
-            <p class="text-lg flex items-end justify-center  font-bold mt-10">割り勘人数は<input  id="totalMembers" class="text-right border border-gray-300" input class="peopleInput" type="number" min="1" max="{{ App\Models\Member::count() }}" value="{{ App\Models\Member::count() }}">人です(減らす場合は入力)</p>
-
+            <p class="text-lg flex items-end justify-center  font-bold mt-10">割り勘人数は<input  id="totalMembers" class="text-right border border-gray-300" input class="peopleInput" type="number" min="1" max="{{ $total }}" value="{{ $total }}">人です(減らす場合は入力)</p>
             <div class="flex justify-center mt-5">
                 <label class="text-lg flex items-center font-bold mr-4">
                     <input type="radio" id="evenSplit" name="sex" value="0" checked> 男女均等
