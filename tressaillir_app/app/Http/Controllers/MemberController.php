@@ -97,11 +97,13 @@ class MemberController extends Controller
         return redirect('/event' . "/" . $request->event_id)->with('registrationCompletedMessage', 'ご登録ありがとうございます！');
     }
 
-    public function pay(Member $member)
+    public function pay(Member $member, Request $request)
     {
         $members = Member::orderBy('created_at', 'asc')->get();
+        $event_id = $request->route('id');
+        $total = Member::where('event_id', $event_id)->count() ;
         // return view('members')->with('members',$members);
-        return view('pay', ['members' => $members]);
+        return view('pay', ['members' => $members, 'total' => $total]);
     }
     /**
      * Display the specified resource.
