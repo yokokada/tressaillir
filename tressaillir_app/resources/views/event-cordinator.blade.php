@@ -9,8 +9,7 @@
 </head>
 
 <body>
-
-  <header class="bg-red-700 p-3">
+  <header class="bg-red-600 p-3">
     <nav class="flex justify-between items-center">
       <div class="text-white text-lg font-bold">
         <h1>飲み会登録画面</h1>
@@ -62,7 +61,7 @@
         </label>
       </div>
       <div class="col-span-2">
-        <button class="mt-14 absolute left-1/2 transform -translate-x-1/2 px-24 py-6 bg-red-700 hover:bg-yellow-300 text-white text-2xl font-bold rounded-2xl" type="submit">登録</button>
+        <button class="mt-14 absolute left-1/2 transform -translate-x-1/2 px-12 py-4 bg-red-600 hover:bg-yellow-400 text-white text-2xl font-bold rounded-2xl" type="submit">登録</button>
       </div>
     </div>
   </form>

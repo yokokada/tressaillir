@@ -8,8 +8,8 @@
   @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class=text-red-700>
-  <header class="bg-red-700 p-3">
+<body class=text-red-600>
+  <header class="bg-red-600 p-3">
     <nav class="flex justify-between items-center">
       <div class="text-white text-lg font-bold">
         <h1>登録イベント一覧</h1>
@@ -28,20 +28,32 @@
   </header>
 
   @foreach ($events as $event)
-  <div class="mt-7 ml-14 flex justify-start hover:bg-yellow-200">
-    {{-- <a href="event-detail/{{ $event->id }}"> --}}
-    <a href="create/{{ $event->id }}/{{ $event->hash }}">
-      <p class="text-2xl font-medium mt-7">{{ $event->date }}　{{ $event->time }}</p>
-      <h1 class="mt-4 text-6xl font-bold ">{{ $event->event }}</h1>
-      <p>{{ url("/create/{$event->id}/{$event->hash}") }}</p>
-    </a>
-    {{-- <a href="event-detail/id={{ $event->id }}">
-      <p class="text-lg">{{ $event->event }}</p>
-    </a> --}}
-  </div>
+  <form action="{{ url('event-register') }}" method="post" class="container mx-auto p-14">
+    @csrf
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <a href="create/{{ $event->id }}/{{ $event->hash }}">
+        <p class="text-l font-medium ">{{ $event->date }} {{ $event->time }}</p>
+        <h1 class="mt-2 text-4xl font-bold ">{{ $event->event }}</h1>
+      </a>
+        <div class="relative">
+          <input name="event" class="form-input p-2.5 w-full text-black bg-white rounded border border-gray-400 focus:border-red-600 focus:ring-0" type="text" value="{{ url("/create/{$event->id}/{$event->hash}") }}" readonly>
+        </div>
+        <button onclick="event.preventDefault(); copyToClipboard('{{ url("/create/{$event->id}/{$event->hash}") }}')" class="bg-red-600 w-full px-4 py-2 text-white rounded">メンバー登録URL コピー</button>
+      </form>
+    </div>
   @endforeach
 
   <script>
+    function copyToClipboard(text) {
+      const el = document.createElement('textarea');
+      el.value = text;
+      document.body.appendChild(el);
+      el.select();
+      document.execCommand('copy');
+      document.body.removeChild(el);
+      alert('クリップボードにコピーしました！');
+    }
+
     const menuToggle = document.getElementById('menu-toggle');
     const menu = document.getElementById('menu');
   
