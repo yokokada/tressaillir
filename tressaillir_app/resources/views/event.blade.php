@@ -21,9 +21,8 @@
       </button>
     </nav>
     <div id="menu" class="hidden py-2 flex flex-col items-end">
-      <a href="#" class="block text-white px-4 py-2">メニュー項目1</a>
-      <a href="#" class="block text-white px-4 py-2">メニュー項目2</a>
-      <a href="#" class="block text-white px-4 py-2">メニュー項目3</a>
+      <a href="/event-index" class="block text-white px-4 py-2">イベントリスト</a>
+      <a href="/" class="block text-white px-4 py-2">ログアウト</a>
     </div>
   </header>
   
@@ -43,7 +42,7 @@
       <p class="text-lg flex justify-center">お店の名前</p>
       <p class="text-4xl font-bold mb-5 flex justify-center">{{ $event->event_place }}</p>
       <p class="text-lg flex justify-center">住所</p>
-      <p class="text-xl font-bold mb-5 flex justify-center">{{ $event->place_url }}</p>
+      <p class="text-xl font-bold mb-5 flex justify-center"><a href="{{ $event->place_url }}">{{ $event->place_url }}</a></p>
     </div>
   </div>
 

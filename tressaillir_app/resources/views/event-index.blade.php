@@ -21,9 +21,8 @@
       </button>
     </nav>
     <div id="menu" class="hidden py-2 flex flex-col items-end">
-      <a href="#" class="block text-white px-4 py-2">メニュー項目1</a>
-      <a href="#" class="block text-white px-4 py-2">メニュー項目2</a>
-      <a href="/event-cordinator" class="block text-white px-4 py-2">戻る</a>
+      <a href="/event-cordinator" class="block text-white px-4 py-2">イベント登録</a>
+      <a href="/" class="block text-white px-4 py-2">ログアウト</a>
     </div>
   </header>
 
