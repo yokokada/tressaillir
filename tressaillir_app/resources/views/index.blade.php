@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <header class="bg-red-700 p-3">
+    <header class="bg-red-600 p-3">
         <div class="flex justify-between items-center">
             <h1 class="text-white font-bold">{{ $event_title->event->event }}</h1>
             <nav class="flex justify-between items-center">
@@ -62,7 +62,7 @@
                         </div>
                         <div class="mb-4">
                             <button id="distributeButton"
-                                class="border border-gray-500 rounded-lg px-4 py-2">席決めスタート</button><br>
+                                class="px-4 py-2 bg-red-600 hover:bg-yellow-400 text-white font-bold rounded-lg">席決めスタート</button><br>
 
                         </div>
                         <div class="set">
@@ -115,7 +115,7 @@
                         <br>以下のボタンを押して
                         <br>お会計入力画面に進んでください
                     </p><br>
-                    <a href="/pay/{{ $event_title->event->id }}" class="border border-gray-500 rounded-lg px-4 py-2">飲み会終了</a>
+                    <a href="/pay/{{ $event_title->event->id }}" class="px-4 py-2 bg-gray-500 text-white font-bold rounded-lg">飲み会終了</a>
                 </div>
             </div>
         </div>
