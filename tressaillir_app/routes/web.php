@@ -21,6 +21,11 @@ Route::get('/', function () {
     return view('/welcome');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/welcome/{param1}/{param2}', 'App\Http\Controllers\YourController@redirectToWelcome');
+Route::get('/welcome2', function () {
+    return view('welcome2');
+});
+
 // ーーーーーーーーーーーーイベント登録関係ーーーーーーーーーーーーーーーー
 //イベント情報入力画面 event-cordinator.blade.php
 Route::get('/event-cordinator', [EventController::class, "eventCordinatorForm"])->middleware(['auth', 'verified'])->name('dashboard');
