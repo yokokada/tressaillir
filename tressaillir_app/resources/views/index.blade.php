@@ -51,6 +51,7 @@
                         {{-- 総人数 --}}
                         <p class="mb-2"> 総人数は{{ $total_member }}人です。</p>
                         <div id="container">
+                            @auth
                             <div class="table-container p-2 mb-4 mt-4">
                                 <div class="">テーブル1 <input class="peopleInput w-16 h-8 rounded-lg" type="number" min="0"
                                         max="20">人
@@ -59,12 +60,14 @@
                                     <button class="remove-button bg-gray-400 text-white rounded-lg px-2 py-1">ー</button>
                                 </div>
                             </div>
+                            @endauth
                         </div>
+                        @auth
                         <div class="mb-4">
                             <button id="distributeButton"
                                 class="px-4 py-2 bg-red-600 hover:bg-yellow-400 text-white font-bold rounded-lg">席決めスタート</button><br>
-
                         </div>
+                        @endauth
                         <div class="set">
                             <div id="resultContainer"></div>
                         </div>
@@ -80,6 +83,7 @@
                     </div>
                 </div>
                 {{-- 以下ファーストドリンクタブ --}}
+                @auth
                 <div x-show="activeTab===1">
                     <div class='' id="firstdrink-container">
                         @php
@@ -115,8 +119,10 @@
                         <br>以下のボタンを押して
                         <br>お会計入力画面に進んでください
                     </p><br>
-                    <a href="/pay/{{ $event_title->event->id }}" class="px-4 py-2 bg-gray-500 text-white font-bold rounded-lg">飲み会終了</a>
+                    <a href="/pay/{{ $event_title->event->id }}"
+                        class="px-4 py-2 bg-gray-500 text-white font-bold rounded-lg">飲み会終了</a>
                 </div>
+                @endauth
             </div>
         </div>
     </div>
@@ -127,9 +133,13 @@
         return {
           activeTab: 0,
           tabs: [
+            @auth
               "席決め",
               "ファーストドリンク",
               "飲み会終了"
+            @else
+              "席決め"
+            @endauth
           ]
         };
       };
