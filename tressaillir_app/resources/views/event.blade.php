@@ -8,8 +8,8 @@
   @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class=text-red-700>
-  <header class="bg-red-700 p-3">
+<body class=text-red-600>
+  <header class="bg-red-600 p-3">
     <nav class="flex justify-between items-center">
       <div class="text-white text-lg font-bold">
           <p>{{ $event->event }}</p>
@@ -34,7 +34,7 @@
   @endif
 
   <!-- 飲み会情報を表示 -->
-  <div id="events-container" class="mt-7 flex justify-center">
+  <div id="events-container" class="flex justify-center mx-auto p-8">
     <div>
       <p class="text-lg flex justify-center">日程</p>
       <p class="text-4xl font-bold mb-5 flex justify-center">{{ $event->date }}</p>
@@ -48,17 +48,18 @@
   </div>
 
   <!-- 飲み会参加者のアイコンと名前を表示 -->
-  <p class="text-xl font-bold mt-7 flex justify-center">参加者一覧</p>
-  <div id="members-container" class="grid grid-cols-4 gap-1 mt-2 bg-red-700 pt-7">
+  <p class="text-xl font-bold flex justify-center">参加者一覧</p>
+  <div id="members-container" class="grid grid-cols-4 gap-1 mt-2 bg-red-600 p-5">
     @foreach ($event->members as $member)
     <div class="flex items-center justify-center flex-col">
       <img src="{{ asset($member->icon) }}" class="w-20 h-20 rounded-full mb-1">
-      <p class="text-lg font-bold mb-7 text-white">{{ $member->nickname }}</p>
+      <p class="text-lg font-bold text-white">{{ $member->nickname }}</p>
     </div>
     @endforeach
   </div>
   <!-- 飲み会開始ボタン -->
-  <button id="start-btn" class="mt-16 absolute left-1/2 transform -translate-x-1/2 px-20 py-4 bg-red-700 hover:bg-yellow-500 text-white text-2xl font-bold rounded" type="submit">飲み会開始！</button>
+  <button id="start-btn" class="mt-12 absolute left-1/2 transform -translate-x-1/2 px-12 py-4 bg-red-600 hover:bg-yellow-400 text-white text-2xl font-bold rounded-2xl" type="submit">飲み会開始！</button>
+
   <script>
     const menuToggle = document.getElementById('menu-toggle');
     const menu = document.getElementById('menu');

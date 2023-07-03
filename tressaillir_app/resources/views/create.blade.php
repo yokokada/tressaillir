@@ -15,7 +15,7 @@
 </head>
 
 <body>
-  <header class="bg-red-700 p-3">
+  <header class="bg-red-600 p-3">
     <nav class="flex justify-between items-center">
       <div class="text-white text-lg font-bold">
         <h1>メンバー登録画面</h1>
@@ -43,9 +43,7 @@
         <label class="nickname">
           あだ名
         </label>
-        <input name="nickname"
-          class="form-input p-2.5 w-full text-sm text-gray-900 bg-gray-200 rounded-lg border border-gray-400 focus:border-red-600 focus:ring-0"
-          type="text" placeholder="">
+        <input name="nickname" class="form-input p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-400 focus:border-red-600 focus:ring-0" type="text" placeholder="">
       </div>
       <!-- カラム２ -->
       <div class="col-span-2">
@@ -60,17 +58,14 @@
         <label class="">
           趣味
         </label>
-        <input name="hobby"
-          class="form-input p-2.5 w-full text-sm text-gray-900 bg-gray-200 rounded-lg border border-gray-400 focus:border-red-600 focus:ring-0"
-          type="text" placeholder="">
+        <input name="hobby" class="form-input p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-400 focus:border-red-600 focus:ring-0" type="text" placeholder="">
       </div>
       <!-- カラム5 -->
       <div class="col-span-2">
         <label class="">
           ファーストドリンク
         </label>
-        <select name="firstdrink" id=""
-          class="form-input p-2.5 w-full text-sm text-gray-900 bg-gray-200 rounded-lg border border-gray-400 focus:border-red-600 focus:ring-0">
+        <select name="firstdrink" id="" class="form-input p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-400 focus:border-red-600 focus:ring-0">
           <option value="0">生ビール</option>
           <option value="1">瓶ビール</option>
           <option value="2">ノンアルコールビール</option>
@@ -88,7 +83,7 @@
       <div class="">
         <label class="">
           性別
-          <label for="">
+          <label for=""><br>
             <input type="radio" name="sex" value="0">男性
           </label>
           <label for="">
@@ -104,7 +99,7 @@
         <div class="">
           <input name="event_id" type="hidden" value="{{ $id }}">
           <button
-            class="mt-14 absolute left-1/2 transform -translate-x-1/2 px-20 py-4 bg-red-700 hover:bg-yellow-500 text-white text-2xl font-bold rounded"
+          class="mt-20 absolute left-1/2 transform -translate-x-1/2 px-12 py-4 bg-red-600 hover:bg-yellow-400 text-white text-2xl font-bold rounded-2xl"
             type="submit">送信</button>
         </div>
       </div>
