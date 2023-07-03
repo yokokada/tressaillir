@@ -40,13 +40,10 @@ class MemberController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function createForm($id, $hash)
+    public function createForm($id)
     {
         $event = Event::find($id);
         // イベントが見つからない、またはハッシュが一致しない場合は403エラー
-        if (!$event || $event->hash !== $hash) {
-            abort(403, 'アクセスエラーです');
-        }
         return view('create', ['id' => $id]);
     }
 
