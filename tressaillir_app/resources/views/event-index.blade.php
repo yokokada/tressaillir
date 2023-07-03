@@ -38,7 +38,7 @@
         <div class="relative">
           <input name="event" class="form-input p-2.5 w-full text-black bg-white rounded border border-gray-400 focus:border-red-600 focus:ring-0" type="text" value="{{ url("/create/{$event->id}/{$event->hash}") }}" readonly>
         </div>
-        <button onclick="event.preventDefault(); copyToClipboard('{{ url("/create/{$event->id}/{$event->hash}") }}')" class="bg-red-600 w-full px-4 py-2 text-white rounded">メンバー登録URL コピー</button>
+        <button onclick="event.preventDefault(); copyToClipboard('{{ url("/create/{$event->id}/{$event->hash}") }}')" class="bg-red-600 w-full px-4 py-2 text-white rounded">招待URL コピー</button>
       </form>
     </div>
   @endforeach
