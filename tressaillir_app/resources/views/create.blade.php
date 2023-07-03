@@ -98,10 +98,10 @@
       <div class="">
         <div class="">
           <input name="event_id" type="hidden" value="{{ $id }}">
-          <button
-          class="mt-20 absolute left-1/2 transform -translate-x-1/2 px-12 py-4 bg-red-600 hover:bg-yellow-400 text-white text-2xl font-bold rounded-2xl"
-            type="submit">送信</button>
         </div>
+        <button
+        class="mt-20 absolute left-1/2 transform -translate-x-1/2 px-12 py-4 bg-red-600 hover:bg-yellow-400 text-white text-2xl font-bold rounded-2xl"
+          type="submit">送信</button>
       </div>
     </div>
   </form>
