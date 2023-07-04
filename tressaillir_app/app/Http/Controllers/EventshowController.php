@@ -31,7 +31,8 @@ class EventshowController extends Controller
         // テーブル1からデータを取得
         // $members = Member::where('event_id', '=', $eid)->get();
         // テーブル2からデータを取得
-        $event = Event::with('members')->where('user_id', Auth::user()->id)->find($id);
+        $event = Event::with('members')->find($id);
+        // $event = Event::with('members')->where('user_id', Auth::user()->id)->find($id);
         // $event = Event::with('members')->find($eid);
         // $event = Event::find($eid)->first();
 
