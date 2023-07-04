@@ -101,25 +101,34 @@ class MemberController extends Controller
         return redirect('/event' . "/" . $request->event_id . "/" . $eventHash)->with('registrationCompletedMessage', 'ご登録ありがとうございます！');
     }
 
-    public function pay(Member $member, Request $request)
+    public function pay(Member $member, Request $request , $id, $hash)
     {
+        $event = Event::find($id);
         $members = Member::orderBy('created_at', 'asc')->get();
         $event_id = $request->route('id');
         $total = Member::where('event_id', $event_id)->count() ;
         $event_title = Member::where('event_id', $event_id)->first();
         // return view('members')->with('members',$members);
+        if (!$event || $event->hash !== $hash) {
+            abort(403, 'アクセスエラーです');
+        }
+        
         return view('pay', ['members' => $members, 'total' => $total, 'event_title'=> $event_title]);
     }
     /**
      * Display the specified resource.
      */
-    public function close(Member $member, Request $request)
+    public function close(Member $member, Request $request, $id, $hash)
     {
+        $event = Event::find($id);
         $members = Member::orderBy('created_at', 'asc')->get();
         $event_id = $request->route('id');
         $total = Member::where('event_id', $event_id)->count() ;
         $event_title = Member::where('event_id', $event_id)->first();
         // return view('members')->with('members',$members);
+        // if (!$event || $event->hash !== $hash) {
+        //     abort(403, 'アクセスエラーです');
+        // }
         return view('close', ['members' => $members,'event_title'=> $event_title]);
     }
 
