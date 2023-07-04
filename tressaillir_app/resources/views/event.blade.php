@@ -32,32 +32,43 @@
   </div>
   @endif
 
-  <!-- 飲み会情報を表示 -->
-  <div id="events-container" class="flex justify-center mx-auto p-8">
-    <div>
-      <p class="text-lg flex justify-center">日程</p>
-      <p class="text-4xl font-bold mb-5 flex justify-center">{{ $event->date }}</p>
-      <p class="text-lg flex justify-center">時間</p>
-      <p class="text-4xl font-bold mb-5 flex justify-center">{{ $event->time }}</p>
-      <p class="text-lg flex justify-center">お店の名前</p>
-      <p class="text-4xl font-bold mb-5 flex justify-center">{{ $event->event_place }}</p>
-      <p class="text-lg flex justify-center">住所</p>
-      <p class="text-xl font-bold mb-5 flex justify-center"><a href="{{ $event->place_url }}">{{ $event->place_url }}</a></p>
-    </div>
+<!-- 飲み会情報を表示 -->
+<div id="events-container" class="flex justify-center mx-auto p-8">
+  <div>
+    <p class="text-lg flex justify-center">日程</p>
+    <p class="text-4xl font-bold mb-5 flex justify-center">{{ $event->date }}</p>
+    <p class="text-lg flex justify-center">時間</p>
+    <p class="text-4xl font-bold mb-5 flex justify-center">{{ $event->time }}</p>
+    <p class="text-lg flex justify-center">お店の名前</p>
+    <p class="text-4xl font-bold mb-5 flex justify-center">{{ $event->event_place }}</p>
+    <p class="text-lg flex justify-center">住所</p>
+    <p class="text-xl font-bold flex justify-center">
+      <a href="{{ $event->place_url }}">
+        {{ $event->place_url }}
+      </a>
+    </p>
   </div>
+</div>
 
-  <!-- 飲み会参加者のアイコンと名前を表示 -->
-  <p class="text-xl font-bold flex justify-center">参加者一覧</p>
-  <div id="members-container" class="grid grid-cols-4 gap-1 mt-2 bg-red-600 p-5">
-    @foreach ($event->members as $member)
-    <div class="flex items-center justify-center flex-col">
-      <img src="{{ asset($member->icon) }}" class="w-20 h-20 rounded-full mb-1">
-      <p class="text-lg font-bold text-white">{{ $member->nickname }}</p>
-    </div>
-    @endforeach
+<!-- 飲み会参加者のアイコンと名前を表示 -->
+<p class="text-xl font-bold text-gray-700 flex justify-center">参加者一覧</p>
+<div id="members-container" class="grid grid-cols-4 gap-1 mt-2 bg-gray-200 p-5">
+  @foreach ($event->members as $member)
+  <div class="flex items-center justify-center flex-col">
+    <img src="{{ asset($member->icon) }}" class="w-20 h-20 rounded-full mb-1">
+    <p class="text-lg font-bold text-gray-700">{{ $member->nickname }}</p>
   </div>
-  <!-- 飲み会開始ボタン -->
-  <button id="start-btn" class="mt-12 absolute left-1/2 transform -translate-x-1/2 px-12 py-4 bg-red-600 hover:bg-yellow-400 text-white text-2xl font-bold rounded-2xl" type="submit">飲み会開始！</button>
+  @endforeach
+</div>
+
+<!-- 飲み会開始ボタン -->
+<div class="mt-8 flex justify-center">
+  <button id="start-btn" class="px-10 py-4 bg-red-600 hover:bg-yellow-400 text-white text-2xl font-bold rounded-xl" type="submit">
+    飲み会開始！
+  </button>
+</div>
+
+<div class="mt-8"></div>
 
   <script>
     const menuToggle = document.getElementById('menu-toggle');
