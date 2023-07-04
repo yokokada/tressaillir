@@ -102,7 +102,7 @@
                         <br>以下のボタンを押して
                         <br>お会計入力画面に進んでください
                     </p><br>
-                    <a href="/pay/{{ $event_title->event->id }}"
+                    <a href="/pay/{{ $event_title->event->id }}/{{ $event_title->event->hash }}"
                         class="px-4 py-2 bg-gray-700 text-white font-bold rounded-lg">飲み会終了</a>
                 </div>
                 @endauth

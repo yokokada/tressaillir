@@ -146,8 +146,10 @@
             //     alert(data.message);
                  // クリックイベントが完了した後にページ遷移を行います。
                  var eventId = "{{ $event_title->event->id }}"; // 適切なイベントIDを設定してください。
+                 var eventHash = "{{ $event_title->event->hash }}"; // 適切なイベントIDを設定してください。
                  console.log(eventId)
-                 window.location.href = "/close/" +  eventId;
+                 window.location.href = "/close/" +  eventId + "/" + eventHash;
+                //  window.location.href = "/close/" +  eventId;
             });
            
     
