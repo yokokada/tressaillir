@@ -7,26 +7,9 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body >
-    <header class="bg-red-700 p-3">
-        <nav class="flex justify-between items-center">
-            <h1 class="text-white font-bold">
-                 <p>{{ $event_title->event->event }}</p> 
-            </h1>
-            <button id="menu-toggle" class="text-white p-2 rounded-md">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                </svg>
-            </button>
-            </nav>
-            <div id="menu" class="hidden py-2 flex flex-col items-end">
-            <a href="#" class="block text-white px-4 py-2">メニュー項目1</a>
-            <a href="#" class="block text-white px-4 py-2">メニュー項目2</a>
-            <a href="#" class="block text-white px-4 py-2">メニュー項目3</a>
-            </div>
-    </header>
     <div id="end-massege" class="mt-7 flex justify-center">
             <div>
-                <p class="text-4xl font-bold mb-5 flex justify-center text-red-700">楽しかったですね！<br>また飲みましょう！</p></br>
+                <p class="text-4xl font-bold mb-5 flex justify-center text-red-700">また飲もか！</p>
                 <p class="text-lg flex justify-center">女性のお会計額は</p>
                 <p class="text-4xl font-bold mb-5 flex justify-center" id="womenAmount"></p>
                 <p class="text-lg flex justify-center">女性以外の方のお会計は</p>
