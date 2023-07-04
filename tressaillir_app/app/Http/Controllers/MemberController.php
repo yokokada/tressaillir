@@ -14,7 +14,7 @@ class MemberController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index($id)
+    public function index($id, $hash)
     {
         // $members = Member::orderBy('created_at', 'asc')->get();
         $event = Event::find($id);
@@ -29,9 +29,9 @@ class MemberController extends Controller
         //     'total_member' => $total_member
         // ]);
         //
-        // if (!$event || $event->hash !== $hash) {
-        //     abort(403, 'アクセスエラーです');
-        // }
+        if (!$event || $event->hash !== $hash) {
+            abort(403, 'アクセスエラーです');
+        }
         return view('index', compact('members', 'total_member', 'event_title'));
     }
 
@@ -90,8 +90,14 @@ class MemberController extends Controller
         $member->event_id     = $request->event_id;
         $member->save();
 
+        // $test = Member::with('events')->select($request->event_id)->get();
         //テーブルに保存
-        return redirect('/event' . "/" . $request->event_id)->with('registrationCompletedMessage', 'ご登録ありがとうございます！');
+        $member = Member::where('event_id',$request->event_id)->first();
+        //membersテーブルの親テーブルeventsのhashカラムを取得する
+        $eventHash = $member->event->hash;
+
+        // return redirect('/event' . "/" . $request->event_id . "/" . $request->event->hash)->with('registrationCompletedMessage', 'ご登録ありがとうございます！');
+        return redirect('/event' . "/" . $request->event_id . "/" . $eventHash)->with('registrationCompletedMessage', 'ご登録ありがとうございます！');
     }
 
     public function pay(Member $member, Request $request)

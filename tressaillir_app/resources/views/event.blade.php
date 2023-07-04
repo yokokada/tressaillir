@@ -12,7 +12,7 @@
   <header class="bg-red-600 p-3">
     <nav class="flex justify-between items-center">
       <div class="text-white text-lg font-bold">
-          <p>{{ $event->event }}</p>
+        <p>{{ $event->event }}</p>
       </div>
       <button id="menu-toggle" class="text-white p-2 rounded-md">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
@@ -25,7 +25,7 @@
       <a href="/" class="block text-white px-4 py-2">ログアウト</a>
     </div>
   </header>
-  
+
   @if (session('registrationCompletedMessage'))
   <div class="registrationCompletedMessage text-green-600 font-bold text-center">
     {{ session('registrationCompletedMessage') }}
@@ -42,7 +42,8 @@
       <p class="text-lg flex justify-center">お店の名前</p>
       <p class="text-4xl font-bold mb-5 flex justify-center">{{ $event->event_place }}</p>
       <p class="text-lg flex justify-center">住所</p>
-      <p class="text-xl font-bold mb-5 flex justify-center"><a href="{{ $event->place_url }}">{{ $event->place_url }}</a></p>
+      <p class="text-xl font-bold mb-5 flex justify-center"><a href="{{ $event->place_url }}">{{ $event->place_url
+          }}</a></p>
     </div>
   </div>
 
@@ -57,7 +58,9 @@
     @endforeach
   </div>
   <!-- 飲み会開始ボタン -->
-  <button id="start-btn" class="mt-12 absolute left-1/2 transform -translate-x-1/2 px-12 py-4 bg-red-600 hover:bg-yellow-400 text-white text-2xl font-bold rounded-2xl" type="submit">飲み会開始！</button>
+  <button id="start-btn"
+    class="mt-12 absolute left-1/2 transform -translate-x-1/2 px-12 py-4 bg-red-600 hover:bg-yellow-400 text-white text-2xl font-bold rounded-2xl"
+    type="submit">飲み会開始！</button>
 
   <script>
     const menuToggle = document.getElementById('menu-toggle');
@@ -70,10 +73,13 @@
   <script>
     // 開始ボタンのJS
 document.getElementById('start-btn').addEventListener('click', function(e) {
-    // クリックイベントが完了した後にページ遷移を行います。
-    var eventId = "{{ $event->id }}"; // 画面上の適切なイベントIDを設定してください。
-    window.location.href = "/index/" + eventId;
+    // クリックイベントが完了した後にページ遷移を行う
+    var eventId = "{{ $event->id }}";
+    var eventHash = "{{ $event->hash }}";
+    window.location.href = "/index/" + eventId + "/" + eventHash;
+    // window.location.href = "/index/" + eventId;
 });
   </script>
 </body>
+
 </html>
