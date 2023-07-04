@@ -19,7 +19,7 @@
                 <source src="{{ asset('video/Nomoca_welcome.mp4') }}" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
-            <a href="{{ url("/create/{$param1}/{$param2}") }}" class="absolute bottom-24 left-1/2 transform -translate-x-1/2 px-12 py-4 bg-red-600 hover:bg-yellow-400 text-white font-bold text-2xl rounded-2xl">START</a>
+            <a href="{{ url("/create/{$param1}/{$param2}") }}" class="absolute bottom-24 left-1/2 transform -translate-x-1/2 px-12 py-4 bg-white hover:bg-yellow-400 text-red-600 font-bold text-2xl rounded-2xl">START</a>
         </div>
     </div>
     <script src="{{ asset('js/app.js') }}"></script>

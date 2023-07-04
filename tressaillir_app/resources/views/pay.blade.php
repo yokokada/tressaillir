@@ -12,31 +12,21 @@
             <h1 class="text-white font-bold">
                  <p>{{ $event_title->event->event }}</p> 
             </h1>
-            <button id="menu-toggle" class="text-white p-2 rounded-md">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                </svg>
-            </button>
-            </nav>
-            <div id="menu" class="hidden py-2 flex flex-col items-end">
-            <a href="#" class="block text-white px-4 py-2">メニュー項目1</a>
-            <a href="#" class="block text-white px-4 py-2">メニュー項目2</a>
-            <a href="#" class="block text-white px-4 py-2">メニュー項目3</a>
-            </div>
+        </nav>
     </header>
 
 <!--------------- 会計入力画面 ---------------------->
 <!-- 会計入力 -->
-<div class="flex flex-col items-center" style="text-align: center;">
-    <div class="container mx-auto p-14" style="text-align: center;">
+<div class="flex flex-col items-center text-gray-700" style="text-align: center;">
+    <div class="container mx-auto p-8" style="text-align: center;">
         @csrf
         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2" style="text-align: center;">
             <div class="col-span-2">
-                <label class="block">
+                <label class="block text-lg">
                     お会計額
                     <div class="flex items-center">
                         <input name="event" class="form-input p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-400 focus:border-red-600 focus:ring-0" type="text" id="amount" placeholder="">
-                        <span class="ml-2 text-lg text-black">円</span>
+                        <span class="ml-2">円</span>
                     </div>
                 </label>
             </div>
@@ -62,14 +52,15 @@
             <div class="col-span-2">
                 <button id="calculate" class="w-full py-2 bg-red-600 hover:bg-yellow-400 text-white text-xl font-bold rounded-lg mt-2">割り勘額確認！</button>
                 <p class="text-2xl flex justify-center font-bold mt-4">お会計は</p>
-                <p class="text-lg font-bold flex justify-center mt-2" id="menAmount">男性 / 返答なし　　円</p>
-                <p class="text-lg font-bold flex justify-center"  id="womenAmount">女性　　円</p>
-                <p class="text-lg font-bold flex justify-center"  id="remainder">余剰金　円です</p>
+                <p class="text-lg font-bold flex justify-center mt-2" id="menAmount">男性 / 返答なし　　円</span></p>
+                <p class="text-lg font-bold flex justify-center" id="womenAmount">女性　　円</span></p>
+                <p class="text-lg font-bold flex justify-center" id="remainder">余剰金　円</span>です</p>
                 <p class="text-xs mt-2">※100円単位で切り上げるため、集めた合計金額がお会計よりも多くなることがあります。</p>
-                <p class="text-lg flex justify-center font-bold mt-4">２次会の場所が決まっていれば入力してください。</p>
-            </div>
-            <div class="col-span-2">
-                <label class="block">
+              </div>
+
+            <div class="col-span-2 mt-8">
+                <p class="text-lg flex justify-center font-bold">２次会の場所が決まっていれば、入力してください。</p>
+                <label class="block mt-2">
                     店名
                     <input id="event_place" class="form-input p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-400 focus:border-red-600 focus:ring-0" type="text" placeholder="">
                 </label>
