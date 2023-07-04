@@ -21,6 +21,7 @@ class MemberController extends Controller
         $members = Member::where('event_id', $id)->orderBy('created_at', 'asc')->get();
         $total_member = Member::where('event_id', $id)->count();
         $event_title = Member::where('event_id', $id)->first();
+        // $event_id = Member::where('event_id', $id)->where()->first();
         // $event_title = Member::where('event',)
         // return view('index', ['members' => $members],['event_title' => $event_title],['$total_member' => $total_member]);
         // return view('index', [
@@ -32,7 +33,7 @@ class MemberController extends Controller
         // if (!$event || $event->hash !== $hash) {
         //     abort(403, 'アクセスエラーです');
         // }
-        return view('index', compact('members', 'total_member', 'event_title'));
+        return view('index', compact('members', 'total_member', 'event_title','event'));
     }
 
         // $event = Event::with('members')->where('user_id', Auth::user()->id)->find($eid);

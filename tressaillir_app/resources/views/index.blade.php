@@ -12,7 +12,7 @@
     <header class="bg-red-600 p-3">
         <div class="flex justify-between items-center">
             <h1 class="text-white font-bold">{{ $event_title->event->event }}</h1>
-
+            <a href="/close/{{ $event->id }}" class="text-white font-bold">お会計</a>
         </div>
     </header>
 
