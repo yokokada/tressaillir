@@ -46,12 +46,12 @@ Route::post('/members', [MemberController::class, "store"]);
 
 // ーーーーーーーーーーーー表示関係ーーーーーーーーーーーーーーーーーーー
 // 飲み会前画面 event.blade.php
-// Route::get('/event/{id}/{hash}', [EventshowController::class, 'show']);
-Route::get('/event/{id}', [EventshowController::class, 'show']);
+Route::get('/event/{id}/{hash}', [EventshowController::class, 'show']);
+// Route::get('/event/{id}', [EventshowController::class, 'show']);
 
 //席替え表示画面 index.blade.php
-// Route::get('/index/{id}/{hash}', [MemberController::class, "index"]);
-Route::get('/index/{id}', [MemberController::class, "index"]);
+Route::get('/index/{id}/{hash}', [MemberController::class, "index"]);
+// Route::get('/index/{id}', [MemberController::class, "index"]);
 
 // お会計画面 pay.blade.php
 Route::get('/pay/{id}', [MemberController::class, "pay"]);

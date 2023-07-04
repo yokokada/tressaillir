@@ -12,7 +12,7 @@
   <header class="bg-red-600 p-3">
     <nav class="flex justify-between items-center">
       <div class="text-white text-lg font-bold">
-          <p>{{ $event->event }}</p>
+        <p>{{ $event->event }}</p>
       </div>
       <button id="menu-toggle" class="text-white p-2 rounded-md">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
@@ -25,7 +25,7 @@
       <a href="/" class="block text-white px-4 py-2">ログアウト</a>
     </div>
   </header>
-  
+
   @if (session('registrationCompletedMessage'))
   <div class="registrationCompletedMessage text-green-600 font-bold text-center">
     {{ session('registrationCompletedMessage') }}
@@ -81,10 +81,13 @@
   <script>
     // 開始ボタンのJS
 document.getElementById('start-btn').addEventListener('click', function(e) {
-    // クリックイベントが完了した後にページ遷移を行います。
-    var eventId = "{{ $event->id }}"; // 画面上の適切なイベントIDを設定してください。
-    window.location.href = "/index/" + eventId;
+    // クリックイベントが完了した後にページ遷移を行う
+    var eventId = "{{ $event->id }}";
+    var eventHash = "{{ $event->hash }}";
+    window.location.href = "/index/" + eventId + "/" + eventHash;
+    // window.location.href = "/index/" + eventId;
 });
   </script>
 </body>
+
 </html>
