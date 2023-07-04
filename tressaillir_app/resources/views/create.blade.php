@@ -21,10 +21,8 @@
         <h1>メンバー登録画面</h1>
       </div>
       <button id="menu-toggle" class="text-white p-2 rounded-md">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-          class="h-6 w-6">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M4 6h16M4 12h16M4 18h16"></path>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
       </button>
     </nav>
@@ -43,7 +41,9 @@
         <label class="nickname">
           あだ名
         </label>
-        <input name="nickname" class="form-input p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-400 focus:border-red-600 focus:ring-0" type="text" placeholder="">
+        <input name="nickname"
+          class="form-input p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-400 focus:border-red-600 focus:ring-0"
+          type="text" placeholder="">
       </div>
       <!-- カラム２ -->
       <div class="col-span-2">
@@ -58,14 +58,17 @@
         <label class="">
           趣味
         </label>
-        <input name="hobby" class="form-input p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-400 focus:border-red-600 focus:ring-0" type="text" placeholder="">
+        <input name="hobby"
+          class="form-input p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-400 focus:border-red-600 focus:ring-0"
+          type="text" placeholder="">
       </div>
       <!-- カラム5 -->
       <div class="col-span-2">
         <label class="">
           ファーストドリンク
         </label>
-        <select name="firstdrink" id="" class="form-input p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-400 focus:border-red-600 focus:ring-0">
+        <select name="firstdrink" id=""
+          class="form-input p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-400 focus:border-red-600 focus:ring-0">
           <option value="0">生ビール</option>
           <option value="1">瓶ビール</option>
           <option value="2">ノンアルコールビール</option>
@@ -100,7 +103,7 @@
           <input name="event_id" type="hidden" value="{{ $id }}">
         </div>
         <button
-        class="mt-20 absolute left-1/2 transform -translate-x-1/2 px-12 py-4 bg-red-600 hover:bg-yellow-400 text-white text-2xl font-bold rounded-2xl"
+          class="mt-20 absolute left-1/2 transform -translate-x-1/2 px-12 py-4 bg-red-600 hover:bg-yellow-400 text-white text-2xl font-bold rounded-2xl"
           type="submit">送信</button>
       </div>
     </div>
@@ -131,4 +134,5 @@
     }
   </script>
 </body>
+
 </html>

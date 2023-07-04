@@ -34,29 +34,23 @@ Route::get('/event-cordinator', [EventController::class, "eventCordinatorForm"])
 Route::post('/event-register', [EventController::class, "store"]);
 //イベントタイトル一覧表示 event-index.blade.php
 Route::get('/event-index', [EventController::class, "index"])->middleware(['auth', 'verified'])->name('dashboard');
-//イベント詳細ページ event-detail.blade.php
-Route::get('/event-detail/{id}', [EventController::class, "show"])->middleware(['auth', 'verified'])->name('event-detail');
 
 // ーーーーーーーーーーーー参加者登録関係ーーーーーーーーーーーーーーーー
 //参加者情報入力画面 create.blade.php
 Route::get('/create/{id}/{hash}', [MemberController::class, "createForm"])->name('participantsForm');
-// Route::get('/create', [MemberController::class, "createForm"]);
 //参加者入力フォームのデータ登録 ファイルなし
 Route::post('/members', [MemberController::class, "store"]);
 
 // ーーーーーーーーーーーー表示関係ーーーーーーーーーーーーーーーーーーー
+// 個人情報画面 event.blade.php
+Route::post('/getprofile', [MemberController::class, "show"]);
 // 飲み会前画面 event.blade.php
 Route::get('/event/{id}/{hash}', [EventshowController::class, 'show']);
-// Route::get('/event/{id}', [EventshowController::class, 'show']);
-
 //席替え表示画面 index.blade.php
 Route::get('/index/{id}/{hash}', [MemberController::class, "index"]);
-// Route::get('/index/{id}', [MemberController::class, "index"]);
-
 // お会計画面 pay.blade.php
 Route::get('/pay/{id}/{hash}', [MemberController::class, "pay"]);
 // 飲み会終了画面 close.blade.php
-// Route::get('/close/{id}', [MemberController::class, "close"]);
 Route::get('/close/{id}/{hash}', [MemberController::class, "close"]);
 
 // ーーーーーーーーーーログイン認証ーーーーーーーーーーーーーーーーーーーーー
