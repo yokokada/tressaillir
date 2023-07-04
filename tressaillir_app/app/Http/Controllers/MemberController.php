@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Member;
 use App\Models\Event;
 use Illuminate\Http\Request;
@@ -33,10 +34,10 @@ class MemberController extends Controller
         if (!$event || $event->hash !== $hash) {
             abort(403, 'アクセスエラーです');
         }
-        return view('index', compact('members', 'total_member', 'event_title','event'));
+        return view('index', compact('members', 'total_member', 'event_title', 'event'));
     }
 
-        // $event = Event::with('members')->where('user_id', Auth::user()->id)->find($eid);
+    // $event = Event::with('members')->where('user_id', Auth::user()->id)->find($eid);
 
     /**
      * Show the form for creating a new resource.
@@ -93,7 +94,7 @@ class MemberController extends Controller
 
         // $test = Member::with('events')->select($request->event_id)->get();
         //テーブルに保存
-        $member = Member::where('event_id',$request->event_id)->first();
+        $member = Member::where('event_id', $request->event_id)->first();
         //membersテーブルの親テーブルeventsのhashカラムを取得する
         $eventHash = $member->event->hash;
 
@@ -101,19 +102,27 @@ class MemberController extends Controller
         return redirect('/event' . "/" . $request->event_id . "/" . $eventHash)->with('registrationCompletedMessage', 'ご登録ありがとうございます！');
     }
 
-    public function pay(Member $member, Request $request , $id, $hash)
+    // プロフィール表示用
+    public function show()
+    {
+        $id = request()->get('id');
+        $member_profile = Member::where('id', $id)->firstOrFail();
+        return $member_profile;
+    }
+
+    public function pay(Member $member, Request $request, $id, $hash)
     {
         $event = Event::find($id);
         $members = Member::orderBy('created_at', 'asc')->get();
         $event_id = $request->route('id');
-        $total = Member::where('event_id', $event_id)->count() ;
+        $total = Member::where('event_id', $event_id)->count();
         $event_title = Member::where('event_id', $event_id)->first();
         // return view('members')->with('members',$members);
         if (!$event || $event->hash !== $hash) {
             abort(403, 'アクセスエラーです');
         }
-        
-        return view('pay', ['members' => $members, 'total' => $total, 'event_title'=> $event_title]);
+
+        return view('pay', ['members' => $members, 'total' => $total, 'event_title' => $event_title]);
     }
     /**
      * Display the specified resource.
@@ -123,13 +132,13 @@ class MemberController extends Controller
         $event = Event::find($id);
         $members = Member::orderBy('created_at', 'asc')->get();
         $event_id = $request->route('id');
-        $total = Member::where('event_id', $event_id)->count() ;
+        $total = Member::where('event_id', $event_id)->count();
         $event_title = Member::where('event_id', $event_id)->first();
         // return view('members')->with('members',$members);
         // if (!$event || $event->hash !== $hash) {
         //     abort(403, 'アクセスエラーです');
         // }
-        return view('close', ['members' => $members,'event_title'=> $event_title]);
+        return view('close', ['members' => $members, 'event_title' => $event_title]);
     }
 
     /**

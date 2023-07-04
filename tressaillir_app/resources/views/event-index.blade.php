@@ -34,12 +34,15 @@
         <p class="text-l font-medium ">{{ $event->date }} {{ $event->time }}</p>
         <h1 class="mt-2 text-4xl font-bold ">{{ $event->event }}</h1>
       </a>
-        <div class="relative">
-          <input name="event" class="form-input p-2.5 w-full text-black bg-white rounded border border-gray-400 focus:border-red-600 focus:ring-0" type="text" value="{{ url("/welcome/{$event->id}/{$event->hash}") }}" readonly>
-        </div>
-        <button onclick="event.preventDefault(); copyToClipboard('{{ url("/welcome/{$event->id}/{$event->hash}") }}')" class="bg-red-600 w-full px-4 py-2 text-white rounded">招待URL コピー</button>
-      </form>
-    </div>
+      <div class="relative">
+        <input name="event"
+          class="form-input p-2.5 w-full text-black bg-white rounded border border-gray-400 focus:border-red-600 focus:ring-0"
+          type="text" value="{{ url("/welcome/{$event->id}/{$event->hash}") }}" readonly>
+      </div>
+      <button onclick="event.preventDefault(); copyToClipboard('{{ url("/welcome/{$event->id}/{$event->hash}") }}')"
+        class="bg-red-600 w-full px-4 py-2 text-white rounded">招待URL コピー</button>
+  </form>
+  </div>
   @endforeach
 
   <script>
