@@ -56,9 +56,9 @@
   <div id="members-container" class="grid grid-cols-4 gap-1 mt-2 bg-gray-200 p-5">
     @foreach ($event->members as $member)
     <div class="flex items-center justify-center flex-col">
-        <div id="show-profile" class="cursor-pointer" onclick="openModal({{ $member->id }})">
-          <img src="{{ asset($member->icon) }}" class="w-20 h-20 rounded-full mb-1 object-cover">
-        </div>
+      <div id="show-profile" class="cursor-pointer" onclick="openModal({{ $member->id }})">
+        <img src="{{ asset($member->icon) }}" class="w-20 h-20 rounded-full mb-1 object-cover">
+      </div>
       <p class="text-lg font-bold text-gray-700">{{ $member->nickname }}</p>
     </div>
     @endforeach
@@ -137,7 +137,6 @@ document.getElementById('start-btn').addEventListener('click', function(e) {
           ];
           let drink = res.firstdrink;
           if (drink >= 0 && drink < drinks.length) {
-            console.log(drinks[drink]);
             document.getElementById('firstdrink').textContent = drinks[drink];
           }
         })
