@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Document</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -58,9 +59,10 @@
                     <div id="members-container" class="mt-8 grid grid-cols-2 gap-4">
                         @foreach ($members as $member)
                         <div class="flex items-center justify-center flex-col">
-                            <p class="text-lg font-bold mb-1" id="member-nickname">{{ $member->nickname }}</p>
-                            <img src="{{ asset($member->icon) }}" class="w-20 h-20 rounded-full">
-                            {{-- <p>{{ $member->event->event }}</p> --}}
+                            <div id="show-profile" class="cursor-pointer" onclick="openModal({{ $member->id }})">
+                                <p class="text-lg font-bold mb-1" id="member-nickname">{{ $member->nickname }}</p>
+                                <img src="{{ asset($member->icon) }}" class="w-20 h-20 rounded-full">
+                            </div>
                         </div>
                         @endforeach
                     </div>
@@ -109,6 +111,7 @@
             </div>
         </div>
     </div>
+    @include('components.profile-modal')
 
     <!--  タブの切り替えJS -->
     <script>
@@ -137,6 +140,84 @@
       
         menuToggle.addEventListener('click', () => {
           menu.classList.toggle('hidden');
+        });
+    </script>
+    プロフィール表示モーダル
+    @include('components.profile-modal')
+    <script>
+        //プロフィール詳細表示関係
+          function openModal(id) {
+            const url = "/getprofile";
+            const data = { id: id };
+            const headers = {
+              "Content-Type": "application/json",
+              "X-CSRF-TOKEN": document
+              .querySelector("[name='csrf-token']")
+              .getAttribute("content"),
+            };
+            fetch(url, {
+              method: "POST",
+              headers: headers,
+              body: JSON.stringify(data),
+            })
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error("Fetch failed");
+              }
+              return response.json();
+            })
+            .then((res) => {
+              document.getElementById("nickname").innerHTML = res.nickname;
+              document.getElementById("hobby").innerHTML = res.hobby;
+              document.getElementById("firstdrink").innerHTML = res.firstdrink;
+              var assetBaseUrl = "{{ asset('') }}";
+              document.getElementById("icon").src = assetBaseUrl + res.icon;
+              
+              const drinks = [
+              '生ビール',
+              '瓶ビール',
+              'ノンアルコールビール',
+              'ハイボール',
+              'レモンサワー',
+              'ウーロンハイ',
+              '緑茶ハイ',
+              '烏龍茶',
+              'コーラ',
+              'ジンジャーエール',
+              'その他'
+              ];
+              let drink = res.firstdrink;
+              if (drink >= 0 && drink < drinks.length) {
+                console.log(drinks[drink]);
+                document.getElementById('firstdrink').textContent = drinks[drink];
+              }
+            })
+            .catch((error) => {
+              alert("Fetch error");
+            });
+            const modalContainer = document.querySelector(".modal-container");
+            modalContainer.style.display = "flex";
+            modalContainer.classList.remove("opacity-0", "invisible");
+            modalContainer.classList.add("opacity-100", "visible");
+          }
+    </script>
+    <script>
+        document.querySelector(".modal-close").addEventListener("click", function () {
+          const modalContainer = document.querySelector(".modal-container");
+          modalContainer.style.display = "none";
+          modalContainer.classList.add("opacity-0", "invisible");
+          modalContainer.classList.remove("opacity-100", "visible");
+        });
+    
+        document.addEventListener("DOMContentLoaded", function() {
+          const closeModal = document.querySelector('.modal-close');
+        // モーダルを閉じる
+          closeModal.addEventListener('click', function() {
+            const modalContainer = document.querySelector(".modal-container");
+            modalContainer.style.display = 'none';
+            modalContainer.classList.remove("opacity-100", "visible");
+            modalContainer.classList.add("opacity-0", "invisible");
+          });
         });
     </script>
 </body>
