@@ -142,7 +142,6 @@
           menu.classList.toggle('hidden');
         });
     </script>
-    プロフィール表示モーダル
     @include('components.profile-modal')
     <script>
         //プロフィール詳細表示関係

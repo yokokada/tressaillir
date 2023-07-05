@@ -58,24 +58,25 @@ class MemberController extends Controller
     //管理フラグはhiddenのためチェックなし
     public function store(Request $request)
     {
-        // $validator = Validator::make($request->all(), [
-        //     'nickname'     => 'required | min:1 | max:20',
-        //     'icon'         => 'nullable',
-        //     'hobby'        => 'required',
-        //     'sex'          => 'required',
-        //     'firstdrink'   => 'required',
-        //     'main_guest'   => 'required',
-        // ]);
+        $validator = Validator::make($request->all(), [
+            'nickname'     => 'required | min:1 | max:20',
+            'icon'         => 'required',
+            'hobby'        => 'required',
+            'sex'          => 'required',
+            'firstdrink'   => 'required',
+        ]);
 
-        //     //バリデーション:エラー 
-        //     if ($validator->fails()) {
-        //         return redirect('/')
-        //             ->withInput()
-        //             ->withErrors($validator);
-        //     }
-        //     //以下に登録処理を記述（Eloquentモデル）
-        // Eloquentモデル カラム名をデータベースに情報を保存する
-        //ディレクトリ名
+            //バリデーション:エラー 
+            // if ($validator->fails()) {
+            //     return redirect('/')
+            //         ->withInput()
+            //         ->withErrors($validator);
+            // }
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withInput()
+                ->withErrors($validator);
+        }
 
         $dir = 'img';
         $file_name = time() . '.' . $request->file('icon')->getClientOriginalName();
