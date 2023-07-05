@@ -61,7 +61,7 @@
                         <div class="flex items-center justify-center flex-col">
                             <div id="show-profile" class="cursor-pointer" onclick="openModal({{ $member->id }})">
                                 <p class="text-lg font-bold mb-1" id="member-nickname">{{ $member->nickname }}</p>
-                                <img src="{{ asset($member->icon) }}" class="w-20 h-20 rounded-full">
+                                <img src="{{ asset($member->icon) }}" class="w-20 h-20 rounded-full object-cover">
                             </div>
                         </div>
                         @endforeach
@@ -188,7 +188,6 @@
               ];
               let drink = res.firstdrink;
               if (drink >= 0 && drink < drinks.length) {
-                console.log(drinks[drink]);
                 document.getElementById('firstdrink').textContent = drinks[drink];
               }
             })

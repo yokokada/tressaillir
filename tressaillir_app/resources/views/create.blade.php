@@ -28,7 +28,7 @@
     </nav>
     <div id="menu" class="hidden py-2 flex flex-col items-end">
       <a href="/event-index" class="block text-white px-4 py-2">イベントリスト</a>
-      <a href="/event/{{ $id }}" class="block text-white px-4 py-2">イベント詳細</a>
+      <a href="/event/{{ $id }}/{{ $hash }}" class="block text-white px-4 py-2">イベント詳細</a>
       <a href="/" class="block text-white px-4 py-2">ログアウト</a>
     </div>
   </header>
