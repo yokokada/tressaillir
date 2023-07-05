@@ -44,7 +44,7 @@
       <p class="text-4xl font-bold mb-5 flex justify-center">{{ $event->event_place }}</p>
       <p class="text-lg flex justify-center">住所</p>
       <p class="text-xl font-bold flex justify-center">
-        <a href="{{ $event->place_url }}">
+        <a href="{{ $event->place_url }}" style="word-break: break-all;">
           {{ $event->place_url }}
         </a>
       </p>
