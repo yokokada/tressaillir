@@ -44,6 +44,9 @@
         <input name="nickname"
           class="form-input p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-400 focus:border-red-600 focus:ring-0"
           type="text" placeholder="">
+          @error('nickname')
+            <span class="text-xs text-danger text-red-600">{{ $message }}</span>
+          @enderror
       </div>
       <!-- カラム２ -->
       <div class="col-span-2">
@@ -51,6 +54,9 @@
           アイコン
         </label>
         <input type="file" name="icon" accept="image/*" onchange="showFile(event)">
+        @error('icon')
+        <span class="text-xs text-danger text-red-600">{{ $message }}</span>
+        @enderror
         <div id="image-preview" class="w-full"></div>
       </div>
       <!-- カラム4 -->
@@ -61,6 +67,9 @@
         <input name="hobby"
           class="form-input p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-400 focus:border-red-600 focus:ring-0"
           type="text" placeholder="">
+          @error('hobby')
+          <span class="text-xs text-danger text-red-600">{{ $message }}</span>
+          @enderror
       </div>
       <!-- カラム5 -->
       <div class="col-span-2">
@@ -81,6 +90,9 @@
           <option value="9">ジンジャーエール</option>
           <option value="10">その他</option>
         </select>
+        @error('firstdrink')
+        <span class="text-xs text-danger text-red-600">{{ $message }}</span>
+        @enderror
       </div>
 
       <div class="">
@@ -96,6 +108,9 @@
             <input type="radio" name="sex" value="2">答えない
           </label>
         </label>
+        @error('sex')
+        <span class="text-xs text-danger text-red-600">{{ $message }}</span>
+        @enderror
       </div>
       <!-- 送信ボタン -->
       <div class="">
